@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+	<title>مرتب</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://sobhe.ap01.aws.af.cm/css/Fonts.css">
+</head>
+<body>
+<div class="wrap">
+	<div class="container">
+		<div class="header">
+			<h1>متن مرتب</h1>
+		</div>
+
+		<textarea id="content" name="content">متن مرتب همان [Markdown] است با یک اسم *فارسی* و یک ویرایشگر مناسب.
+
+[Markdown]: https://daringfireball.net/projects/markdown/
+		</textarea>
+		<div class="push"></div>
+	</div>
+</div>
+<div class="footer">
+	<div class="container">
+		<hr>
+		<p class="pull-right">کاری از <a href="http://www.sobhe.ir/">سُبحه</a></p>
+	</div>
+</div>
+
+<link rel="stylesheet" href="codemirror.css">
+<link rel="stylesheet" href="base16-light.css">
+<script src="codemirror.js"></script>
+<script src="markdown.js"></script>
+<style type="text/css">
+body {
+	font-family: BMitra, ENassim, Arial;
+	font-size: 18px;
+	line-height: 1.5;
+	direction: rtl;
+	background: #f5f5f5;
+}
+h1, h2, h3, h4 {
+	font-family: BMitra, ENassim, Arial;
+	font-weight: bold;
+	letter-spacing: -1;
+}
+
+.container {
+	max-width: 800px;
+}
+
+.header {
+	padding: 20px 0 10px;
+}
+
+html, body {
+	height: 100%;
+}
+.wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -60px;
+}
+.footer, .push {
+	height: 60px;
+}
+.footer hr {
+	margin: 15px 0 5px;
+}
+.footer p {
+	font-size: 90%;
+	color: #AAA;
+}
+
+/* editor */
+
+.CodeMirror {
+	height: auto;
+	font-family: BMitra, ENassim, Arial;
+	line-height: 1.5;
+}
+.cm-variable-2 {
+	display: inline-block;
+}
+.CodeMirror-scroll {
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+.ltr {
+	direction: ltr;
+	font-family: ENassim, BMitra, Arial;
+}
+</style>
+
+<script type="text/javascript">
+var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
+	mode: "markdown",
+	lineNumbers: false,
+	lineWrapping: true,
+	rtlMoveVisually: true,
+	theme: 'base16-light',
+	viewportMargin: Infinity
+});
+var ltr = /^[ <>*+\t\/\[\(-]*[A-Za-z]/;
+function setLineDirection(line) {
+	if (ltr.test(line.text))
+		editor.addLineClass(line, 'wrap', 'ltr')
+	else
+		editor.removeLineClass(line, 'wrap', 'ltr')
+}
+editor.eachLine(setLineDirection);
+editor.on('renderLine', function (cm, line) { setLineDirection(line); });
+</script>
+</body>
+</html>
