@@ -7,30 +7,6 @@
 	<link rel="stylesheet" href="http://sobhe.ap01.aws.af.cm/css/Fonts.css">
 </head>
 <body>
-<div class="wrap">
-	<div class="container">
-		<div class="header">
-			<h1>متن مرتب</h1>
-		</div>
-
-		<textarea id="content" name="content">متن مرتب همان [Markdown] است با یک اسم *فارسی* و یک ویرایشگر مناسب.
-
-[Markdown]: https://daringfireball.net/projects/markdown/
-		</textarea>
-		<div class="push"></div>
-	</div>
-</div>
-<div class="footer">
-	<div class="container">
-		<hr>
-		<p class="pull-right">کاری از <a href="http://www.sobhe.ir/">سُبحه</a></p>
-	</div>
-</div>
-
-<link rel="stylesheet" href="codemirror.css">
-<link rel="stylesheet" href="base16-light.css">
-<script src="codemirror.min.js"></script>
-<script src="markdown.min.js"></script>
 <style type="text/css">
 body {
 	font-family: BMitra, ENassim, Arial;
@@ -72,9 +48,34 @@ html, body {
 	font-size: 90%;
 	color: #AAA;
 }
+</style>
+<div class="wrap">
+	<div class="container">
+		<div class="header">
+			<h1>متن مرتب</h1>
+		</div>
 
-/* editor */
+		<textarea id="content" name="content" style="display: none">متن مرتب همان [Markdown] است با یک اسم *فارسی* و یک ویرایشگر مناسب.
 
+[Markdown]: https://daringfireball.net/projects/markdown/
+		</textarea>
+		<div class="push"></div>
+	</div>
+</div>
+<div class="footer">
+	<div class="container">
+		<hr>
+		<p class="pull-right">ما <a href="http://www.sobhe.ir/moratab">مرتب</a> می‌نویسیم</p>
+		<p class="pull-left">کاری از <a href="http://www.sobhe.ir/">سُبحه</a></p>
+	</div>
+</div>
+
+<link rel="stylesheet" href="codemirror.css">
+<link rel="stylesheet" href="base16-light.css">
+<script src="codemirror.min.js"></script>
+<script src="markdown.min.js"></script>
+
+<style type="text/css">
 .CodeMirror {
 	height: auto;
 	font-family: BMitra, ENassim, Arial;
