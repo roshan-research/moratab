@@ -25,49 +25,148 @@ h1, h2, h3, h4 {
 	max-width: 800px;
 }
 
-.header {
-	padding: 20px 0 10px;
-}
-
-html, body {
-	height: 100%;
-}
-.wrap {
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -60px;
-}
-.footer, .push {
-	height: 60px;
-}
 .footer hr {
 	margin: 15px 0 5px;
 }
 .footer p {
 	font-size: 90%;
-	color: #AAA;
+	color: #aaa;
+}
+
+/* preview */
+
+.preview blockquote {
+  border-left: none;
+  border-right: 5px solid #ddd;
+}
+
+.preview .footnote-backref {
+  display: none;
+}
+
+.preview img {
+	margin: 20px auto;
+	display: block;
+	border: 2px solid #ddd;
+}
+
+.preview pre {
+	direction: ltr;
+}
+
+.preview hr {
+	margin: 15px 0 5px;
+}
+.preview .footnote {
+	font-size: 90%;
+	color: #555;
+}
+
+.table th, .table td {
+  text-align: center;
+}
+.table th:first-child, .table td:first-child {
+  text-align: right;
 }
 </style>
-<div class="wrap">
-	<div class="container">
-		<div class="header">
-			<h1>متن مرتب</h1>
-		</div>
 
-		<textarea id="content" name="content" style="display: none">متن مرتب همان [Markdown] است با یک اسم *فارسی* و یک ویرایشگر مناسب.
+<div class="container" style="margin-top: 50px">
+	<textarea id="content" name="content" style="display: none"># مرتب
+متن *مرتب* یا [مارک‌دان]، نوشته‌ای است که شیوه نمایش آن با علامت‌های ساده‌ای مشخص شده است. یعنی شکل نمایش متن را لابه‌لای واژه‌ها می‌نویسید. مثلا *خاص* بودن یک عبارت و یا **تاکید** روی نکته‌ها با کمک ستاره انجام می‌شود.
 
-[Markdown]: https://daringfireball.net/projects/markdown/
+> وقتی *مرتب* می‌نویسید، مطمئن هستید که چیزی در متن پنهان نشده. در مقابل نرم‌افزار [ورد] که گاهی می‌بینید نشان‌گر روی یک خط خالی ایستاده و به صورت *مورب* قرار گرفته؛ انگار چیزی آن زیر هست. راستش آن زیر، [چیز خیلی مزخرفی] هست.
+
+نوشته‌های *مرتب* کاربردهای زیادی دارند:
+
++ [پرسیدن سوال](http://stackoverflow.com)
++ [بحث در مورد پروژه](https://github.com)
++ [وب‌نوشت](https://svbtle.com)
++ [گزارش پروژه](http://www.boute.ir)
++ ...
+
+قرار دادن [پیوند]، پاورقی[^1] و یا حتی تصویر هم در این نوشتار پیش‌بینی شده:
+
+![تصویر پرنده‌ها](http://www.sobhe.ir/baaz/img/goshawk.jpg)
+
+## کد
+اگر برنامه‌نویس هستید، این کد `Python` همین نوشته را تبدیل به قالب `HTML` می‌کند:
+
+	>>> import markdown
+	>>> markdown.markdown(content, extensions=['tables', 'footnotes'])
+
+## جدول
+جدول *مرتب* شده هم بسیار بامزه است (نقطه‌ها چینش ستون را نشان می‌دهد):
+
+| نوشتار   | بدون نیاز به آموزش | ویژگی‌های نامتناهی |
+|:------|:------------:|:------------:|
+| مرتب    |          ✓            |            ✗           |
+| ورد       |          ✗            |           ✓           |
+
+به این ترتیب، نوشته [مرتب] با مشخص کردن آدرس پیوندها به پایان می‌رسد.
+
+[مرتب]: http://www.sobhe.ir/moratab
+[مارک‌دان]: https://daringfireball.net/projects/markdown
+[پیوند]: http://peyvandha.ir
+[ورد]: http://office.microsoft.com/en-us/word
+[چیز خیلی مزخرفی]: http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html
+[^1]: پاورقی
 		</textarea>
-		<div class="push"></div>
-	</div>
 </div>
-<div class="footer">
-	<div class="container">
-		<hr>
-		<p class="pull-right">ما <a href="http://www.sobhe.ir/moratab">مرتب</a> می‌نویسیم</p>
-		<p class="pull-left">کاری از <a href="http://www.sobhe.ir/">سُبحه</a></p>
-	</div>
+<hr style="border-top: 20px solid #fff">
+<div class="container">
+	<div class="preview">
+<h1>مرتب</h1>
+<p>متن <em>مرتب</em> یا <a href="https://daringfireball.net/projects/markdown">مارک‌دان</a>، نوشته‌ای است که شیوه نمایش آن با علامت‌های ساده‌ای مشخص شده است. یعنی شکل نمایش متن را لابه‌لای واژه‌ها می‌نویسید. مثلا <em>خاص</em> بودن یک عبارت و یا <strong>تاکید</strong> روی نکته‌ها با کمک ستاره انجام می‌شود.</p>
+<blockquote>
+<p>وقتی <em>مرتب</em> می‌نویسید، مطمئن هستید که چیزی در متن پنهان نشده. در مقابل نرم‌افزار <a href="http://office.microsoft.com/en-us/word">ورد</a> که گاهی می‌بینید نشان‌گر روی یک خط خالی ایستاده و به صورت <em>مورب</em> قرار گرفته؛ انگار چیزی آن زیر هست. راستش آن زیر، <a href="http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html">چیز خیلی مزخرفی</a> هست.</p>
+</blockquote>
+<p>نوشته‌های <em>مرتب</em> کاربردهای زیادی دارند:</p>
+<ul>
+<li><a href="http://stackoverflow.com">پرسیدن سوال</a></li>
+<li><a href="https://github.com">بحث در مورد پروژه</a></li>
+<li><a href="https://svbtle.com">وب‌نوشت</a></li>
+<li><a href="http://www.boute.ir">گزارش پروژه</a></li>
+<li>...</li>
+</ul>
+<p>قرار دادن <a href="http://peyvandha.ir">پیوند</a>، پاورقی<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> و یا حتی تصویر هم در این نوشتار پیش‌بینی شده:</p>
+<p><img alt="تصویر پرنده‌ها" src="http://www.sobhe.ir/baaz/img/goshawk.jpg" /></p>
+<h2>کد</h2>
+<p>اگر برنامه‌نویس هستید، این کد <code>Python</code> همین نوشته را تبدیل به قالب <code>HTML</code> می‌کند:</p>
+<pre><code>&gt;&gt;&gt; import markdown
+&gt;&gt;&gt; markdown.markdown(content, extensions=['tables', 'footnotes'])
+</code></pre>
+<h2>جدول</h2>
+<p>جدول <em>مرتب</em> شده هم بسیار بامزه است (نقطه‌ها چینش ستون را نشان می‌دهد):</p>
+<table>
+<thead>
+<tr>
+<th align="left">نوشتار</th>
+<th align="center">بدون نیاز به آموزش</th>
+<th align="center">ویژگی‌های نامتناهی</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">مرتب</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="left">ورد</td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+</tr>
+</tbody>
+</table>
+<p>به این ترتیب، نوشته <a href="http://www.sobhe.ir/moratab">مرتب</a> با مشخص کردن آدرس پیوندها به پایان می‌رسد.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>پاورقی&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>	</div>
 </div>
 
 <link rel="stylesheet" href="codemirror.css">
@@ -105,7 +204,8 @@ var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
 	lineWrapping: true,
 	rtlMoveVisually: true,
 	theme: 'base16-light',
-	viewportMargin: Infinity
+	viewportMargin: Infinity,
+	cursorHeight: 0.85
 });
 var ltr = /^[ <>*+\t\/\[\(-]*[A-Za-z]/;
 function setLineDirection(line) {
