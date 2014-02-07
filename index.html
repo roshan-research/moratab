@@ -62,11 +62,17 @@ h1, h2, h3, h4 {
 	color: #555;
 }
 
-.table th, .table td {
-  text-align: center;
+table thead {
+	font-size: 90%;
 }
-.table th:first-child, .table td:first-child {
-  text-align: right;
+td[align=center], th[align=center] {
+	text-align: center;
+}
+td[align=left], th[align=left] {
+	text-align: right;
+}
+td[align=right], th[align=right] {
+	text-align: left;
 }
 </style>
 
@@ -137,7 +143,7 @@ h1, h2, h3, h4 {
 </code></pre>
 <h2>جدول</h2>
 <p>جدول <em>مرتب</em> شده هم بسیار بامزه است (نقطه‌ها چینش ستون را نشان می‌دهد):</p>
-<table>
+<table class="table table-striped">
 <thead>
 <tr>
 <th align="left">نوشتار</th>
