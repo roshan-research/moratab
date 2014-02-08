@@ -25,14 +25,6 @@ h1, h2, h3, h4 {
 	max-width: 800px;
 }
 
-.footer hr {
-	margin: 15px 0 5px;
-}
-.footer p {
-	font-size: 90%;
-	color: #aaa;
-}
-
 /* preview */
 
 .preview blockquote {
@@ -56,6 +48,7 @@ h1, h2, h3, h4 {
 
 .preview hr {
 	margin: 15px 0 5px;
+	border-color: #ddd;
 }
 .preview .footnote {
 	font-size: 90%;
@@ -208,7 +201,7 @@ var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
 	mode: "markdown",
 	lineNumbers: false,
 	lineWrapping: true,
-	rtlMoveVisually: true,
+	rtlMoveVisually: false,
 	theme: 'base16-light',
 	viewportMargin: Infinity,
 	cursorHeight: 0.85
