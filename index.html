@@ -97,7 +97,7 @@ td[align=right], th[align=right] {
 | ورد          |              ✗              |                ✓               |
 
 ## فرمول‌های ریاضی
-در نوشته‌های تخصصی، فرمول‌های ریاضی هم لازم می‌شوند، که می‌توانید آنها را در قالب `LaTeX` بنویسید:
+در نوشته‌های تخصصی، فرمول‌های ریاضی هم لازم می‌شوند، که می‌توانید آنها را در قالب $ LaTeX $ بنویسید:
 
 $$ P(E) = {n \choose k} p^k (1-p)^{ n-k} $$
 
@@ -159,7 +159,7 @@ $$ P(E) = {n \choose k} p^k (1-p)^{ n-k} $$
 </tbody>
 </table>
 <h2>فرمول‌های ریاضی</h2>
-<p>در نوشته‌های تخصصی، فرمول‌های ریاضی هم لازم می‌شوند، که می‌توانید آنها را در قالب <code>LaTeX</code> بنویسید:</p>
+<p>در نوشته‌های تخصصی، فرمول‌های ریاضی هم لازم می‌شوند، که می‌توانید آنها را در قالب $ LaTeX $ بنویسید:</p>
 <p>$$ P(E) = {n \choose k} p^k (1-p)^{ n-k} $$</p>
 <h2>کد</h2>
 <p>اگر برنامه‌نویس هستید، تکه کد <code>Python</code> زیر، همین نوشته را به قالب <code>HTML</code> تبدیل می‌کند:</p>
@@ -178,6 +178,15 @@ $$ P(E) = {n \choose k} p^k (1-p)^{ n-k} $$
 	</div>
 </div>
 
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$','$']],
+			displayMath: [['$$','$$']],
+			processEscapes: true
+		}
+	});
+</script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <link rel="stylesheet" href="codemirror.css">
