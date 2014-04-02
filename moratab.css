@@ -1,5 +1,6 @@
 
 body {
+	background: #fff;
 	margin: 0;
 	padding: 0 10px;
 }
@@ -64,6 +65,11 @@ body {
 	padding: 10px 20px;
 	margin: 0 0 20px;
 	border-right: 5px solid #ddd;
+	border-left: none;
+}
+#epiceditor-preview blockquote[dir=ltr] {
+	border-right: none;
+	border-left: 5px solid #ddd;
 }
 #epiceditor-preview blockquote p {
 	line-height: 1.25;
