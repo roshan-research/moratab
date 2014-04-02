@@ -82,11 +82,12 @@ $$ P(E) = {n \choose k} p^k (1-p)^{ n-k} $$
 </script>
 
 <script src="marked.js"></script>
+<script src="moratab.js"></script>
 <script src="epiceditor.js"></script>
 
 <script type="text/javascript">
-
 marked.defaults = {
+	renderer: moratab,
 	gfm: true,
 	tables: true,
 	breaks: true,
@@ -95,7 +96,6 @@ marked.defaults = {
 	silent: false,
 	highlight: null
 };
-
 
 var opts = {
 	container: 'moratab',

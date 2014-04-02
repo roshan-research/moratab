@@ -47,6 +47,10 @@ body {
 #epiceditor-preview ul, #epiceditor-preview ol {
 	margin-top: 0;
 	margin-bottom: 10px;
+	padding: 0 20px;
+}
+#epiceditor-preview li[dir=ltr] {
+	text-align: left;
 }
 
 #epiceditor-preview img {
