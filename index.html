@@ -13,7 +13,7 @@ body {
 	font-size: 18px;
 	line-height: 1.5;
 	direction: rtl;
-	background: #fefefe;
+	background: #fff;
 }
 h1, h2, h3, h4 {
 	font-family: IRMitra, Arial;
@@ -50,7 +50,7 @@ h1, h2, h3, h4 {
 
 قرار دادن [پیوند]، پاورقی[^1] و یا حتی تصویر هم در این نوشتار پیش‌بینی شده:
 
-![تصویر پرنده‌ها](http://www.sobhe.ir/baaz/img/goshawk.jpg)
+![تصویر باز شکاری](http://www.sobhe.ir/baaz/img/goshawk.jpg)
 
 ## جدول
 جدول *مرتب* شده هم بسیار بامزه است (نقطه‌ها چینش ستون را نشان می‌دهد):
@@ -101,12 +101,11 @@ var opts = {
 	container: 'moratab',
 	textarea: null,
 	basePath: '',
-	localStorageName: 'moratab',
+	clientSideStorage: false,
 	parser: marked,
 	file: {
 		name: 'moratab',
 		defaultContent: document.getElementById('default').text.trim(),
-		autoSave: 100
 	},
 	theme: {
 		base: 'epic.css',
