@@ -4,11 +4,11 @@
 var moratab = new marked.Renderer();
 
 var ltr = /^[ <>*+\t\n\\\/\[\($-]*[A-Za-z]/;
+var refine = function(html) {
+	return html[0] == '<' ? refine(html.substr(html.indexOf('>')+1)) : html;
+}
 var direction = function(html) {
-	elm = document.createElement('span');
-	elm.innerHTML = html;
-	text = elm.textContent;
-	return ltr.test(text) ? ' dir="ltr"' : '';
+	return ltr.test(refine(html)) ? ' dir="ltr"' : '';
 }
 
 moratab.paragraph = function(text) {
