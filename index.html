@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<title>مرتب</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://sobhe.ap01.aws.af.cm/css/IRMitra.css">
+</head>
+<body>
+<style type="text/css">
+body {
+	font-family: IRMitra, Arial;
+	font-size: 18px;
+	line-height: 1.5;
+	direction: rtl;
+	background: #fefefe;
+}
+h1, h2, h3, h4 {
+	font-family: IRMitra, Arial;
+	font-weight: bold;
+}
+
+.container {
+	max-width: 800px;
+}
+
+#moratab {
+	margin-top: 30px;
+}
+</style>
+
+<div class="container">
+	<div id="moratab"></div>
+</div>
+
+<script src="epiceditor.js"></script>
+
+<script type="text/javascript">
+
+marked.defaults = {
+	gfm: true,
+	tables: true,
+	breaks: true,
+	pedantic: false,
+	sanitize: false,
+	silent: false,
+	highlight: null
+};
+
+
+var opts = {
+	container: 'moratab',
+	textarea: null,
+	basePath: '',
+	localStorageName: 'moratab',
+	parser: marked,
+	file: {
+		name: 'moratab',
+		defaultContent: '',
+		autoSave: 100
+	},
+	theme: {
+		base: 'epic.css',
+		editor: 'editor.css',
+		preview: 'moratab.css'
+	},
+	focusOnLoad: true,
+	string: {
+		togglePreview: 'پیش نمایش',
+		toggleEdit: 'ویرایش متن',
+		toggleFullscreen: 'تمام صفحه'
+	},
+	autogrow: true
+}
+
+var editor = new EpicEditor(opts).load();
+</script>
+</body>
+</html>

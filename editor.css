@@ -1,0 +1,16 @@
+html {
+	padding: 10px;
+}
+
+body {
+	border: 0;
+	margin: 0;
+	background: none;
+	padding: 10px;
+
+	font-family: IRMitra;
+	font-size: 18px;
+	line-height: 1.5;
+	direction: rtl;
+	color: #333;
+}

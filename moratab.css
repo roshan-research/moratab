@@ -1,0 +1,122 @@
+
+body {
+	margin: 0;
+}
+
+#epiceditor-preview {
+	font-family: IRMitra;
+	font-size: 18px;
+	line-height: 1.5;
+	direction: rtl;
+	color: #333;
+}
+
+/* header */
+
+#epiceditor-preview h1, #epiceditor-preview h2, #epiceditor-preview h3 {
+	line-height: 1.1;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+#epiceditor-preview h1 {
+	font-size: 36px;
+}
+#epiceditor-preview h2 {
+	font-size: 30px;
+}
+#epiceditor-preview h3 {
+	font-size: 24px;
+}
+
+/* content */
+
+#epiceditor-preview p {
+	margin: 0 0 10px;
+}
+
+#epiceditor-preview a {
+	color: #428bca;
+	text-decoration: none;
+}
+#epiceditor-preview a:hover {
+	color: #2a6496;
+	text-decoration: underline;
+}
+
+#epiceditor-preview ul, #epiceditor-preview ol {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+#epiceditor-preview img {
+	margin: 20px auto;
+	display: block;
+	max-width: 100%;
+	box-shadow: 0 0px 5px #aaa;
+}
+
+#epiceditor-preview blockquote {
+	padding: 10px 20px;
+	margin: 0 0 20px;
+	border-right: 5px solid #ddd;
+}
+#epiceditor-preview blockquote p {
+	line-height: 1.25;
+}
+#epiceditor-preview blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+#epiceditor-preview pre {
+	direction: ltr;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 13px;
+}
+#epiceditor-preview code {
+	font-size: 90%;
+	font-family: "Courier New", monospace;
+}
+#epiceditor-preview pre code {
+	font-size: inherit;
+}
+
+/* table */
+
+#epiceditor-preview table {
+	width: 100%;
+	color: inherit;
+	margin-bottom: 20px;
+	font-size: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+#epiceditor-preview table thead {
+	font-size: 90%;
+}
+#epiceditor-preview td[align=center], #epiceditor-preview th[align=center] {
+	text-align: center;
+}
+#epiceditor-preview td[align=left], #epiceditor-preview th[align=left] {
+	text-align: right;
+}
+#epiceditor-preview td[align=right], #epiceditor-preview th[align=right] {
+	text-align: left;
+}
+#epiceditor-preview tr:nth-child(odd) > td {
+	background-color: #f9f9f9;
+}
+#epiceditor-preview td, #epiceditor-preview th {
+	padding: 8px;
+	vertical-align: top;
+}
+#epiceditor-preview th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #ddd;
+}
+#epiceditor-preview td {
+	border-top: 1px solid #ddd;
+}
