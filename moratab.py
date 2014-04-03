@@ -24,6 +24,8 @@ class Moratab(mistune.Renderer):
 		return '<%s align="%s">%s</%s>\n' % (tag, align, content, tag)
 
 
+markdown = mistune.Markdown(renderer=Moratab())
+
+
 def render(text):
-	m = mistune.Markdown(renderer=Moratab())
-	return m.render(text)
+	return markdown.render(text)
