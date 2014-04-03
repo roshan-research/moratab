@@ -120,8 +120,24 @@ var opts = {
 	},
 	autogrow: true
 }
-
 var editor = new EpicEditor(opts).load();
+
+// MathJax support
+
+previewer = editor.getElement('previewer');
+var mathjax = previewer.createElement('script');
+mathjax.type = 'text/javascript';
+mathjax.src = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+previewer.body.appendChild(mathjax);
+
+var config = previewer.createElement('script');
+config.type = 'text/x-mathjax-config';
+config.text = "MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true}});";
+previewer.body.appendChild(config);
+
+editor.on('preview', function() {
+	editor.getElement('previewerIframe').contentWindow.eval('MathJax.Hub.Queue(["Typeset",MathJax.Hub]);');
+});
 </script>
 </body>
 </html>
