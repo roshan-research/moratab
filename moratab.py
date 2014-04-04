@@ -7,6 +7,9 @@ direction = lambda html: ' dir="ltr"' if ltr.match(refine(html)) else ''
 
 
 class Moratab(mistune.Renderer):
+	def header(self, text, level, raw=None):
+		return '<h%d%s>%s</h%d>\n' % (level, direction(text), text, level)
+
 	def paragraph(self, text):
 		return '<p%s>%s</p>\n' % (direction(text), text)
 
