@@ -132,6 +132,9 @@ td {
 
 /* footnote */
 
+.footnotes p {
+	margin: 0;
+}
 hr {
 	margin-top: 20px;
 	margin-bottom: 10px;
