@@ -21,7 +21,7 @@ moratab.paragraph = function(text) {
 	return '<p'+ direction(text) +'>' + text + '</p>\n';
 };
 moratab.listitem = function(text) {
-	return '<li'+ direction(text) +'>' + text + '</li>\n';
+	return '<li'+ direction(text) +'><p>' + text + '</p></li>\n';
 };
 moratab.blockquote = function(quote) {
 	return '<blockquote'+ direction(quote) +'>\n' + quote + '</blockquote>\n';

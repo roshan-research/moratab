@@ -14,7 +14,7 @@ class Moratab(mistune.Renderer):
 		return '<p%s>%s</p>\n' % (direction(text), text)
 
 	def list_item(self, text):
-		return '<li%s>%s</li>\n' % (direction(text), text)
+		return '<li%s><p>%s</p></li>\n' % (direction(text), text)
 
 	def block_quote(self, text):
 		return '<blockquote%s>%s\n</blockquote>' % (direction(text), text)
