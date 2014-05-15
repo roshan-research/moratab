@@ -1,7 +1,7 @@
 
 import re, mistune
 
-ltr = re.compile(r'[ <>*+\t\n\\\/\[\($-]*[A-Za-z]')
+ltr = re.compile(r'[ <>*+\t\n\\\/\[\]\(\)0-9\.-]*[A-Za-z]')
 refine = lambda html: refine(html[html.find('>')+1:]) if html.startswith('<') else html
 direction = lambda html: ' dir="ltr"' if ltr.match(refine(html)) else ''
 
@@ -25,6 +25,9 @@ class Moratab(mistune.Renderer):
 		if not align:
 			return '<%s>%s</%s>\n' % (tag, content, tag)
 		return '<%s align="%s">%s</%s>\n' % (tag, align, content, tag)
+
+	def footnote_item(self, key, text):
+		return '<li%s id="fn-%s">%s</li>\n' % (direction(text), mistune.escape(key), text)
 
 
 markdown = mistune.Markdown(renderer=Moratab(), hard_wrap=True)
