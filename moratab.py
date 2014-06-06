@@ -1,7 +1,7 @@
 
 import re, mistune
 
-ltr = re.compile(r'[ <>*+\t\n\\\/\[\]\(\)0-9\.-]*[A-Za-z]')
+ltr = re.compile(r'[ <>*+\t\n\\\/\[\]\(\)0-9\._-]*[A-Za-z]')
 refine = lambda html: refine(html[html.find('>')+1:]) if html.startswith('<') else html
 direction = lambda html: ' dir="ltr"' if ltr.match(refine(html)) else ''
 

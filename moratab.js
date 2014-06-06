@@ -3,7 +3,7 @@
 
 var moratab = new marked.Renderer();
 
-var ltr = /^[ <>*+\t\n\\\/\[\($-]*[A-Za-z]/;
+var ltr = /^[ <>*+\t\n\\\/\[\]\(\)0-9\._-]*[A-Za-z]/;
 var refine = function(html) {
 	return html[0] == '<' ? refine(html.substr(html.indexOf('>')+1)) : html;
 }
