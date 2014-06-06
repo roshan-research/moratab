@@ -123,6 +123,7 @@ var opts = {
 }
 var editor = new EpicEditor(opts).load();
 
+
 // MathJax support
 
 previewer = editor.getElement('previewer');
@@ -139,6 +140,11 @@ previewer.body.appendChild(config);
 editor.on('preview', function() {
 	editor.getElement('previewerIframe').contentWindow.eval('MathJax.Hub.Queue(["Typeset",MathJax.Hub]);');
 });
+
+
+// start in preview mode
+editor.preview();
+
 </script>
 </body>
 </html>
