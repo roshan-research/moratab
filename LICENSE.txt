@@ -1,0 +1,4 @@
+StackEdit - The Markdown editor powered by PageDown.
+
+Copyright 2013 Benoit Schweblin (http://www.benoitschweblin.com)
+Licensed under an Apache License (http://www.apache.org/licenses/LICENSE-2.0)

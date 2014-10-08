@@ -1,40 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>مرتب</title>
+	<title>StackEdit</title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://sobhe.ap01.aws.af.cm/css/IRMitra.css">
+	<style type="text/css">
+		body {
+			direction: rtl;
+		}
+		.container {
+			max-width: 700px;
+		}
+		#stackedit {
+			margin-top: 20px;
+		}
+	</style>
 </head>
 <body>
-<style type="text/css">
-body {
-	font-family: IRMitra, Arial;
-	font-size: 18px;
-	line-height: 1.5;
-	direction: rtl;
-	background: #fff;
-}
-h1, h2, h3, h4 {
-	font-family: IRMitra, Arial;
-	font-weight: bold;
-}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-.container {
-	max-width: 800px;
-}
-
-#moratab {
-	min-height: 1200px;
-	margin-top: 30px;
-}
-</style>
+<link type="text/css" rel="stylesheet" href="editor.css">
+<script src="prism.js"></script>
+<script src="prism-markdown.js"></script>
+<script src="Markdown.Editor.js"></script>
+<script src="editor.js"></script>
 
 <div class="container">
-	<div id="moratab"></div>
-</div>
-
-<script id="default" type="text">
+<div id="stackedit">
 # مرتب
 
 متن *مرتب* یا [مارک‌دان]، نوشته‌ای است که شیوه نمایش آن با علامت‌های ساده‌ای مشخص شده است. یعنی شکل نمایش متن را لابه‌لای واژه‌ها می‌نویسید. مثلا *خاص* بودن یک عبارت و یا **تاکید** روی نکته‌ها با کمک ستاره انجام می‌شود.
@@ -80,72 +75,12 @@ $$ P(E) = {n \choose k} p^k (1-p)^{ n-k} $$
 [ورد]: http://office.microsoft.com/en-us/word
 [چیز خیلی مزخرفی]: http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html
 [^1]: پاورقی
-
-</script>
-
-<script src="marked.js"></script>
-<script src="moratab.js"></script>
-<script src="epiceditor.js"></script>
+</div>
+</div>
 
 <script type="text/javascript">
-marked.defaults = {
-	renderer: moratab,
-	gfm: true,
-	tables: true,
-	breaks: true,
-	pedantic: false,
-	sanitize: false,
-	silent: false,
-	highlight: null
-};
-
-var opts = {
-	container: 'moratab',
-	textarea: null,
-	basePath: '',
-	clientSideStorage: true,
-	parser: marked,
-	file: {
-		name: 'moratab',
-		defaultContent: document.getElementById('default').text.trim(),
-	},
-	theme: {
-		base: 'epic.css',
-		editor: 'editor.css',
-		preview: 'moratab.css'
-	},
-	focusOnLoad: true,
-	string: {
-		togglePreview: 'پیش نمایش',
-		toggleEdit: 'ویرایش متن',
-		toggleFullscreen: 'تمام صفحه'
-	},
-	autogrow: true
-}
-var editor = new EpicEditor(opts).load();
-
-
-// MathJax support
-
-previewer = editor.getElement('previewer');
-var mathjax = previewer.createElement('script');
-mathjax.type = 'text/javascript';
-mathjax.src = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-previewer.body.appendChild(mathjax);
-
-var config = previewer.createElement('script');
-config.type = 'text/x-mathjax-config';
-config.text = "MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true}});";
-previewer.body.appendChild(config);
-
-editor.on('preview', function() {
-	editor.getElement('previewerIframe').contentWindow.eval('MathJax.Hub.Queue(["Typeset",MathJax.Hub]);');
-});
-
-
-// start in preview mode
-editor.preview();
-
+	var editor = $('#stackedit').stackedit();
 </script>
+
 </body>
 </html>
