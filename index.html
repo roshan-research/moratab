@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>StackEdit</title>
+	<meta charset="utf-8" />
+	<style type="text/css">
+		body {
+			direction: rtl;
+		}
+		.container {
+			max-width: 700px;
+		}
+		#stackedit {
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<link type="text/css" rel="stylesheet" href="editor.css">
+<script src="prism.js"></script>
+<script src="prism-markdown.js"></script>
+<script src="Markdown.Editor.js"></script>
+<script src="editor.js"></script>
+
+<div class="container">
+<div id="stackedit">
+# مرتب
+
+متن *مرتب* یا [مارک‌دان]، نوشته‌ای است که شیوه نمایش آن با علامت‌های ساده‌ای مشخص شده است. یعنی شکل نمایش متن را لابه‌لای واژه‌ها می‌نویسید. مثلا *خاص* بودن یک عبارت و یا **تاکید** روی نکته‌ها با کمک ستاره انجام می‌شود.
+
+> وقتی *مرتب* می‌نویسید، مطمئن هستید که چیزی در متن پنهان نشده. در مقابل نرم‌افزار [ورد] که گاهی می‌بینید نشان‌گر روی یک خط خالی ایستاده و به صورت *مورب* قرار گرفته؛ انگار چیزی آن زیر هست. راستش آن زیر، [چیز خیلی مزخرفی] هست.
+
+نوشته‌های *مرتب* کاربردهای زیادی دارند:
+
++ [پرسیدن سوال](http://stackoverflow.com)
++ [بحث در مورد پروژه](https://github.com)
++ [وب‌نوشت](https://svbtle.com)
++ [گزارش پروژه](http://www.boute.ir)
++ ...
+
+قرار دادن [پیوند]، پاورقی[^1] و یا حتی تصویر هم در این نوشتار پیش‌بینی شده:
+
+![تصویر باز شکاری](http://www.sobhe.ir/baaz/img/goshawk.jpg)
+
+## جدول
+جدول *مرتب* شده هم بسیار بامزه است (نقطه‌ها چینش ستون را نشان می‌دهد):
+
+| نوشتار    | بدون نیاز به آموزش | ویژگی‌های نامتناهی  |
+|:-----|:-----------:|:------------:|
+| مرتب      |              ✓              |                ✗               |
+| ورد          |              ✗              |                ✓               |
+
+## فرمول‌های ریاضی
+در نوشته‌های تخصصی، فرمول‌های ریاضی هم لازم می‌شوند، که می‌توانید آنها را در قالب $ LaTeX $ بنویسید:
+
+$$ P(E) = {n \choose k} p^k (1-p)^{ n-k} $$
+
+## کد
+اگر برنامه‌نویس هستید، تکه کد `Python` زیر، همین نوشته را به قالب `HTML` تبدیل می‌کند:
+
+    >>> import moratab
+    >>> moratab.render(content)
+
+و بلاخره، نوشته [مرتب] با مشخص کردن آدرس پیوندها به پایان می‌رسد.
+
+[مرتب]: http://www.sobhe.ir/moratab
+[مارک‌دان]: https://daringfireball.net/projects/markdown
+[پیوند]: http://peyvandha.ir
+[ورد]: http://office.microsoft.com/en-us/word
+[چیز خیلی مزخرفی]: http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html
+[^1]: پاورقی
+</div>
+</div>
+
+<script type="text/javascript">
+	var editor = $('#stackedit').stackedit();
+</script>
+
+</body>
+</html>
