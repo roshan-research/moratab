@@ -7,7 +7,7 @@ $.fn.stackedit = function () {
 	var contentElt;
 	var $contentElt;
 	var trailingLfNode;
-	var defaultContent = 'Simple **StackEdit**.';
+	var defaultContent = 'متن **مرتب**';
 
 	/* Markdown Section Parser */
 	var delimitersRegexp = '^.+[ \\t]*\\n=+[ \\t]*\\n+|^.+[ \\t]*\\n-+[ \\t]*\\n+|^\\#{1,6}[ \\t]*.+?[ \\t]*\\#*\\n+'; // Title delimiters
@@ -848,7 +848,7 @@ $.fn.stackedit = function () {
 		$("#wmd-bold-button").append($('<span class="glyphicon glyphicon-bold">')).appendTo($('.wmd-buttons .btn-group1'));
 		$("#wmd-italic-button").append($('<span class="glyphicon glyphicon-italic">')).appendTo($('.wmd-buttons .btn-group1'));
 
-		$("#wmd-heading-button").append($('<span class="glyphicon glyphicon-text-height">')).appendTo($('.wmd-buttons .btn-group2'));
+		$("#wmd-heading-button").append($('<span class="glyphicon glyphicon-header">')).appendTo($('.wmd-buttons .btn-group2'));
 		$("#wmd-quote-button").append($('<span class="glyphicon glyphicon-indent-right">')).appendTo($('.wmd-buttons .btn-group2'));
 		$("#wmd-code-button").append($('<span class="glyphicon glyphicon-flash">')).appendTo($('.wmd-buttons .btn-group2'));
 
@@ -910,7 +910,7 @@ $.fn.stackedit = function () {
 
 
 // main.js
-	text = this.text();
+	defaultContent = this.text();
 
 	this.html(
 		'<div class="wmd-buttons"><ul class="btn-group btn-group1"></ul><ul class="btn-group btn-group2"></ul><ul class="btn-group btn-group3"></ul><ul class="btn-group btn-group4"></ul><ul class="btn-group btn-group5"></ul></div><div id="wmd-button-bar" class="hide"></div>'+
@@ -932,6 +932,5 @@ $.fn.stackedit = function () {
 	editor.init();
 	core.initEditor();
 
-	editor.setValue(text)
 	return editor;
 };
