@@ -845,20 +845,22 @@ $.fn.stackedit = function () {
 		$(".wmd-button-row li").addClass("btn btn-default");
 
 		// Add customized buttons
-		var $btnGroupElt = $('.wmd-buttons .btn-group');
-		$("#wmd-bold-button").append($('<span class="glyphicon glyphicon-bold">')).appendTo($btnGroupElt);
-		$("#wmd-italic-button").append($('<span class="glyphicon glyphicon-italic">')).appendTo($btnGroupElt);
-		$("#wmd-link-button").append($('<span class="glyphicon glyphicon-link">')).appendTo($btnGroupElt);
-		$("#wmd-quote-button").append($('<span class="glyphicon glyphicon-indent-right">')).appendTo($btnGroupElt);
-		$("#wmd-code-button").append($('<span class="glyphicon glyphicon-flash">')).appendTo($btnGroupElt);
-		$("#wmd-image-button").append($('<span class="glyphicon glyphicon-picture">')).appendTo($btnGroupElt);
-		$("#wmd-ulist-button").append($('<span class="glyphicon glyphicon-align-justify">')).appendTo($btnGroupElt);
-		$("#wmd-olist-button").append($('<span class="glyphicon glyphicon-list">')).appendTo($btnGroupElt);
-		$("#wmd-heading-button").append($('<span class="glyphicon glyphicon-text-height">')).appendTo($btnGroupElt);
-		$("#wmd-hr-button").append($('<span class="glyphicon glyphicon-minus">')).appendTo($btnGroupElt);
-		$("#wmd-undo-button").append($('<span class="glyphicon glyphicon-arrow-right">')).appendTo($btnGroupElt);
-		$("#wmd-redo-button").append($('<span class="glyphicon glyphicon-arrow-left">')).appendTo($btnGroupElt);
+		$("#wmd-bold-button").append($('<span class="glyphicon glyphicon-bold">')).appendTo($('.wmd-buttons .btn-group1'));
+		$("#wmd-italic-button").append($('<span class="glyphicon glyphicon-italic">')).appendTo($('.wmd-buttons .btn-group1'));
 
+		$("#wmd-heading-button").append($('<span class="glyphicon glyphicon-text-height">')).appendTo($('.wmd-buttons .btn-group2'));
+		$("#wmd-quote-button").append($('<span class="glyphicon glyphicon-indent-right">')).appendTo($('.wmd-buttons .btn-group2'));
+		$("#wmd-code-button").append($('<span class="glyphicon glyphicon-flash">')).appendTo($('.wmd-buttons .btn-group2'));
+
+		$("#wmd-ulist-button").append($('<span class="glyphicon glyphicon-align-justify">')).appendTo($('.wmd-buttons .btn-group3'));
+		$("#wmd-olist-button").append($('<span class="glyphicon glyphicon-list">')).appendTo($('.wmd-buttons .btn-group3'));
+
+		$("#wmd-link-button").append($('<span class="glyphicon glyphicon-link">')).appendTo($('.wmd-buttons .btn-group4'));
+		$("#wmd-image-button").append($('<span class="glyphicon glyphicon-picture">')).appendTo($('.wmd-buttons .btn-group4'));
+		$("#wmd-hr-button").append($('<span class="glyphicon glyphicon-minus">')).appendTo($('.wmd-buttons .btn-group4'));
+
+		$("#wmd-undo-button").append($('<span class="glyphicon glyphicon-arrow-right">')).appendTo($('.wmd-buttons .btn-group5'));
+		$("#wmd-redo-button").append($('<span class="glyphicon glyphicon-arrow-left">')).appendTo($('.wmd-buttons .btn-group5'));
 
 		// Other initialization that are not prioritary
 		$(document.body).on('shown.bs.modal', '.modal', function() {
@@ -911,22 +913,20 @@ $.fn.stackedit = function () {
 	text = this.text();
 
 	this.html(
-		'<div class="wmd-buttons"><ul class="btn-group"></ul></div><div id="wmd-button-bar" class="hide"></div>'+
+		'<div class="wmd-buttons"><ul class="btn-group btn-group1"></ul><ul class="btn-group btn-group2"></ul><ul class="btn-group btn-group3"></ul><ul class="btn-group btn-group4"></ul><ul class="btn-group btn-group5"></ul></div><div id="wmd-button-bar" class="hide"></div>'+
 		'<pre id="wmd-input"><div class="editor-content" contenteditable=true></div></pre>'
 	);
 	$(document.body).append(
-			'<div class="modal fade modal-insert-link"><div class="modal-dialog"><div class="modal-content">'+
-			'<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h2 class="modal-title">Hyperlink</h2></div>'+
-			'<div class="modal-body"><p>Please provide the link URL and an optional title:</p><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span><input id="input-insert-link" type="text" class="col-sm-5 form-control" placeholder="http://example.com/" /></div></div>'+
-			'<div class="modal-footer"><a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a><a href="#" class="btn btn-primary action-insert-link"data-dismiss="modal">OK</a></div>'+
-			'</div></div></div>'
+		'<div class="modal fade modal-insert-link"><div class="modal-dialog"><div class="modal-content">'+
+		'<div class="modal-body"><p>آدرس پیوند را اینجا بنویسید:</p><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span><input id="input-insert-link" type="text" class="col-sm-5 form-control" placeholder="http://example.com/" /></div></div>'+
+		'<div class="modal-footer"><a href="#" class="btn btn-primary action-insert-link"data-dismiss="modal">تایید</a> <a href="#" class="btn btn-default" data-dismiss="modal">لغو</a></div>'+
+		'</div></div></div>'
 	);
 	$(document.body).append(
-			'<div class="modal fade modal-insert-image"><div class="modal-dialog"><div class="modal-content">'+
-			'<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h2 class="modal-title">Image</h2></div>'+
-			'<div class="modal-body"><p>Please provide the image URL and an optional title:</p><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span><input id="input-insert-image" type="text" class="col-sm-5 form-control" placeholder="http://example.com/image.jpg" /></div></div>'+
-			'<div class="modal-footer"><a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a> <a href="#" class="btn btn-primary action-insert-image" data-dismiss="modal">OK</a></div>'+
-			'</div></div></div>'
+		'<div class="modal fade modal-insert-image"><div class="modal-dialog"><div class="modal-content">'+
+		'<div class="modal-body"><p>آدرس تصویر را اینجا بنویسید:</p><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span><input id="input-insert-image" type="text" class="col-sm-5 form-control" placeholder="http://example.com/image.jpg" /></div></div>'+
+		'<div class="modal-footer"><a href="#" class="btn btn-primary action-insert-image" data-dismiss="modal">تایید</a> <a href="#" class="btn btn-default" data-dismiss="modal">لغو</a></div>'+
+		'</div></div></div>'
 	);
 
 	editor.init();

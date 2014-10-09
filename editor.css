@@ -4,17 +4,23 @@
 	src: url('IRMitra.woff') format('woff');
 }
 
+.close {
+	float: left;
+}
+
 body {
 	tab-size: 4;
 	text-align: start;
 }
 
 /* buttons */
+
 .input-group {
 	direction: ltr;
 }
 .wmd-buttons ul {
 	padding: 0;
+	margin-left: 15px;
 }
 .btn-group>.btn {
 	float: right;
@@ -35,7 +41,26 @@ body {
 	border-bottom-right-radius: 0;
 }
 
+/* modal */
+.modal p {
+	font-family: IRMitra;
+	font-size: 18px;
+}
+.modal .btn {
+	font-family: IRMitra;
+	font-size: 17px;
+	padding: 2px 12px;
+}
+.modal-body {
+	padding: 20px 15px 15px;
+}
+.modal-footer {
+	border: none;
+	padding: 0 15px 15px;
+}
+
 /* editor */
+
 #wmd-input {
 	width: 100%;
 	height: 100%;
@@ -175,4 +200,11 @@ body {
 #wmd-input .md-alt,
 #wmd-input .md-title {
 	color: #587ea4;
+}
+#wmd-input .code,
+#wmd-input .img,
+#wmd-input .imgref {
+	background-color: rgba(128, 128, 128, 0.075);
+	border-radius: 4px;
+	padding: .15em 0;
 }
