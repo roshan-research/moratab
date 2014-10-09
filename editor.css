@@ -113,14 +113,6 @@ body {
 #wmd-input .blockquote {
 	color: #668099;
 }
-#wmd-input .h1,
-#wmd-input .h2,
-#wmd-input .h3,
-#wmd-input .h4,
-#wmd-input .h5,
-#wmd-input .h6 {
-	font-weight: 600;
-}
 #wmd-input .h1 .md-hash,
 #wmd-input .h2 .md-hash,
 #wmd-input .h3 .md-hash,
@@ -162,7 +154,6 @@ body {
 #wmd-input .strong,
 #wmd-input .strong .md {
 	font-weight: bold;
-	font-size: 90%;
 }
 #wmd-input .md-strike-text {
 	text-decoration: line-through;
