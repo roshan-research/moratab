@@ -1289,8 +1289,7 @@ var Markdown = {};
 		chunk.trimWhitespace();
 		chunk.selection = chunk.selection.replace(/\n{2,}/g, "\n");
 
-		// Look for stars before and after.  Is the chunk already marked up?
-		// note that these regex matches cannot fail
+		// Look for stars before and after. Is the chunk already marked up? note that these regex matches cannot fail
 		var starsBefore = /(\**$)/.exec(chunk.before)[0];
 		var starsAfter = /(^\**)/.exec(chunk.after)[0];
 
@@ -1302,20 +1301,16 @@ var Markdown = {};
 			chunk.after = chunk.after.replace(re("^[*]{" + nStars + "}", ""), "");
 		}
 		else if (!chunk.selection && starsAfter) {
-			// It's not really clear why this code is necessary.  It just moves
-			// some arbitrary stuff around.
+			// It's not really clear why this code is necessary.  It just moves some arbitrary stuff around.
 			chunk.after = chunk.after.replace(/^([*_]*)/, "");
 			chunk.before = chunk.before.replace(/(\s?)$/, "");
 			var whitespace = re.$1;
 			chunk.before = chunk.before + starsAfter + whitespace;
 		}
 		else {
-
-			// In most cases, if you don't have any selected text and click the button
-			// you'll get a selected, marked up region with the default text inserted.
-			if (!chunk.selection && !starsAfter) {
+			// In most cases, if you don't have any selected text and click the button you'll get a selected, marked up region with the default text inserted.
+			if (!chunk.selection && !starsAfter)
 				chunk.selection = insertText;
-			}
 
 			// Add the true markup.
 			var markup = nStars <= 1 ? "*" : "**"; // shouldn't the test be = ?
@@ -1869,59 +1864,41 @@ var Markdown = {};
 	commandProto.doHeading = function (chunk, postProcessing) {
 
 		// Remove leading/trailing whitespace and reduce internal spaces to single spaces.
-		chunk.selection = chunk.selection.replace(/\s+/g, " ");
-		chunk.selection = chunk.selection.replace(/(^\s+|\s+$)/g, "");
+		chunk.selection = chunk.selection.replace(/\s+/g, ' ');
+		chunk.selection = chunk.selection.replace(/(^\s+|\s+$)/g, '');
 
-		// If we clicked the button with no selected text, we just
-		// make a level 2 hash header around some default text.
+		// If we clicked the button with no selected text, we just make a level 1 hash header around some default text.
 		if (!chunk.selection) {
-			chunk.startTag = "## ";
-			chunk.selection = this.getString("headingexample");
-			chunk.endTag = " ##";
+			chunk.startTag = '# ';
+			chunk.selection = this.getString('headingexample');
+			chunk.endTag = '';
 			return;
 		}
 
-		var headerLevel = 0;     // The existing header level of the selected text.
+		var headerLevel = 0; // The existing header level of the selected text.
 
 		// Remove any existing hash heading markdown and save the header level.
 		chunk.findTags(/#+[ ]*/, /[ ]*#+/);
-		if (/#+/.test(chunk.startTag)) {
+		if (/#+/.test(chunk.startTag))
 			headerLevel = re.lastMatch.length;
-		}
-		chunk.startTag = chunk.endTag = "";
 
-		// Try to get the current header level by looking for - and = in the line
-		// below the selection.
+		// Try to get the current header level by looking for - and = in the line below the selection.
 		chunk.findTags(null, /\s?(-+|=+)/);
-		if (/=+/.test(chunk.endTag)) {
+		if (/=+/.test(chunk.endTag))
 			headerLevel = 1;
-		}
-		if (/-+/.test(chunk.endTag)) {
+		if (/-+/.test(chunk.endTag))
 			headerLevel = 2;
-		}
 
 		// Skip to the next line so we can create the header markdown.
-		chunk.startTag = chunk.endTag = "";
+		chunk.startTag = chunk.endTag = '';
 		chunk.skipLines(1, 1);
 
-		// We make a level 2 header if there is no current header.
-		// If there is a header level, we substract one from the header level.
-		// If it's already a level 1 header, it's removed.
-		var headerLevelToCreate = headerLevel == 0 ? 2 : headerLevel - 1;
-
-		if (headerLevelToCreate > 0) {
-
-			// The button only creates level 1 and 2 underline headers.
-			// Why not have it iterate over hash header levels?  Wouldn't that be easier and cleaner?
-			var headerChar = headerLevelToCreate >= 2 ? "-" : "=";
-			var len = chunk.selection.length;
-			if (len > SETTINGS.lineLength) {
-				len = SETTINGS.lineLength;
-			}
-			chunk.endTag = "\n";
-			while (len--) {
-				chunk.endTag += headerChar;
-			}
+		// Increament header level
+		var headerLevelToCreate = headerLevel+1;
+		if (headerLevelToCreate < 4) {
+			while (headerLevelToCreate--)
+				chunk.startTag += '#';
+			chunk.startTag += ' ';
 		}
 	};
 
