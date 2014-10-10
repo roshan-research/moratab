@@ -1,5 +1,5 @@
 // Credit to http://dabblet.com/
-$.fn.stackedit = function () {
+$.fn.moratab = function () {
 
 	var editor = {};
 	var inputElt;
