@@ -57,45 +57,44 @@ var Markdown = {};
 		};
 
 	var defaultsStrings = {
-		bold: "درشت",
-		boldexample: "درشت",
+		bold: 'درشت',
+		boldexample: 'درشت',
 
-		italic: "مورب",
-		italicexample: "مورب",
+		italic: 'مورب',
+		italicexample: 'مورب',
 
-		link: "پیوند",
-		linkdescription: "پیوند",
-		linkdialog: "",
+		link: 'پیوند',
+		linkdescription: 'پیوند',
+		linkdialog: '',
 
-		quote: "نقل‌قول",
-		quoteexample: "نقل‌قول",
+		quote: 'نقل‌قول',
+		quoteexample: 'نقل‌قول',
 
-		code: "کد",
-		codeexample: "...",
+		code: 'کد',
+		codeexample: '...',
 
-		image: "تصویر",
-		imagedescription: "توضیح تصویر",
-		imagedialog: "",
+		image: 'تصویر',
+		imagedescription: 'توضیح تصویر',
+		imagedialog: '',
 
-		ulist: "فهرست بی‌شماره",
-		olist: "فهرست شماره‌دار",
-		litem: "مورد",
+		ulist: 'فهرست بی‌شماره',
+		olist: 'فهرست شماره‌دار',
+		litem: 'مورد',
 
-		heading: "عنوان",
-		headingexample: "عنوان",
+		heading: 'عنوان',
+		headingexample: 'عنوان',
 
-		hr: "خط افقی",
+		hr: 'خط افقی',
 
-		undo: "بازگشت",
-		redo: "انجام مجدد",
+		undo: 'بازگشت',
+		redo: 'انجام مجدد',
 
-		help: "راهنمای مرتب‌نویسی"
+		help: 'راهنمای مرتب‌نویسی'
 	};
 
-	// The default text that appears in the dialog input box when entering
-	// links.
-	var imageDefaultText = "http://";
-	var linkDefaultText = "http://";
+	// The default text that appears in the dialog input box when entering links.
+	var imageDefaultText = 'http://';
+	var linkDefaultText = 'http://';
 
 	// options, if given, can have the following properties:
 	//   options.helpButton = { handler: yourEventHandler }
@@ -1561,11 +1560,11 @@ var Markdown = {};
 		chunk.before = chunk.before.replace(/(>[ \t]*)$/,
 			function (totalMatch, blankLine) {
 				chunk.selection = blankLine + chunk.selection;
-				return "";
+				return '';
 			});
 
-		chunk.selection = chunk.selection.replace(/^(\s|>)+$/, "");
-		chunk.selection = chunk.selection || this.getString("quoteexample");
+		chunk.selection = chunk.selection.replace(/^(\s|>)+$/, '');
+		chunk.selection = chunk.selection || this.getString('quoteexample');
 
 		// The original code uses a regular expression to find out how much of the
 		// text *directly before* the selection already was a blockquote:
@@ -1760,29 +1759,22 @@ var Markdown = {};
 
 	commandProto.doList = function (chunk, postProcessing, isNumberedList) {
 
-		// These are identical except at the very beginning and end.
-		// Should probably use the regex extension function to make this clearer.
+		// These are identical except at the very beginning and end. Should probably use the regex extension function to make this clearer.
 		var previousItemsRegex = /(\n|^)(([ ]{0,3}([*+-]|\d+[.])[ \t]+.*)(\n.+|\n{2,}([*+-].*|\d+[.])[ \t]+.*|\n{2,}[ \t]+\S.*)*)\n*$/;
 		var nextItemsRegex = /^\n*(([ ]{0,3}([*+-]|\d+[.])[ \t]+.*)(\n.+|\n{2,}([*+-].*|\d+[.])[ \t]+.*|\n{2,}[ \t]+\S.*)*)\n*/;
 
-		// The default bullet is a dash but others are possible.
-		// This has nothing to do with the particular HTML bullet,
-		// it's just a markdown bullet.
-		var bullet = "-";
-
-		// The number in a numbered list.
+		// default prefixes
+		var bullet = '+';
 		var num = 1;
 
-		// Get the item prefix - e.g. " 1. " for a numbered list, " - " for a bulleted list.
 		var getItemPrefix = function () {
 			var prefix;
 			if (isNumberedList) {
-				prefix = " " + num + ". ";
+				prefix = num + '. ';
 				num++;
 			}
-			else {
-				prefix = " " + bullet + " ";
-			}
+			else
+				prefix = bullet + ' ';
 			return prefix;
 		};
 
@@ -1790,15 +1782,11 @@ var Markdown = {};
 		var getPrefixedItem = function (itemText) {
 
 			// The numbering flag is unset when called by autoindent.
-			if (isNumberedList === undefined) {
+			if (isNumberedList === undefined)
 				isNumberedList = /^\s*\d/.test(itemText);
-			}
 
 			// Renumber/bullet the list element.
-			itemText = itemText.replace(/^[ ]{0,3}([*+-]|\d+[.])\s/gm,
-				function (_) {
-					return getItemPrefix();
-				});
+			itemText = itemText.replace(/^[ ]{0,3}([*+-]|\d+[.])\s/gm, function (_) { return getItemPrefix(); });
 
 			return itemText;
 		};
@@ -1807,28 +1795,26 @@ var Markdown = {};
 
 		if (chunk.before && !/\n$/.test(chunk.before) && !/^\n/.test(chunk.startTag)) {
 			chunk.before += chunk.startTag;
-			chunk.startTag = "";
+			chunk.startTag = '';
 		}
 
 		if (chunk.startTag) {
 
 			var hasDigits = /\d+[.]/.test(chunk.startTag);
 			chunk.startTag = "";
-			chunk.selection = chunk.selection.replace(/\n[ ]{4}/g, "\n");
+			chunk.selection = chunk.selection.replace(/\n[ ]{4}/g, '\n');
 			this.unwrap(chunk);
 			chunk.skipLines();
 
-			if (hasDigits) {
-				// Have to renumber the bullet points if this is a numbered list.
+			// Have to renumber the bullet points if this is a numbered list.
+			if (hasDigits)
 				chunk.after = chunk.after.replace(nextItemsRegex, getPrefixedItem);
-			}
-			if (isNumberedList == hasDigits) {
+
+			if (isNumberedList == hasDigits)
 				return;
-			}
 		}
 
 		var nLinesUp = 1;
-
 		chunk.before = chunk.before.replace(previousItemsRegex,
 			function (itemText) {
 				if (/^\s*([*+-])/.test(itemText)) {
@@ -1838,14 +1824,12 @@ var Markdown = {};
 				return getPrefixedItem(itemText);
 			});
 
-		if (!chunk.selection) {
-			chunk.selection = this.getString("litem");
-		}
+		if (!chunk.selection)
+			chunk.selection = this.getString('litem');
 
 		var prefix = getItemPrefix();
 
 		var nLinesDown = 1;
-
 		chunk.after = chunk.after.replace(nextItemsRegex,
 			function (itemText) {
 				nLinesDown = /[^\n]\n\n[^\n]/.test(itemText) ? 1 : 0;
@@ -1855,10 +1839,9 @@ var Markdown = {};
 		chunk.trimWhitespace(true);
 		chunk.skipLines(nLinesUp, nLinesDown, true);
 		chunk.startTag = prefix;
-		var spaces = prefix.replace(/./g, " ");
+		var spaces = prefix.replace(/./g, ' ');
 		this.wrap(chunk, SETTINGS.lineLength - spaces.length);
-		chunk.selection = chunk.selection.replace(/\n/g, "\n" + spaces);
-
+		chunk.selection = chunk.selection.replace(/\n/g, '\n' + spaces);
 	};
 
 	commandProto.doHeading = function (chunk, postProcessing) {
@@ -1903,8 +1886,8 @@ var Markdown = {};
 	};
 
 	commandProto.doHorizontalRule = function (chunk, postProcessing) {
-		chunk.startTag = "----------\n";
-		chunk.selection = "";
+		chunk.startTag = '----------\n';
+		chunk.selection = '';
 		chunk.skipLines(2, 1, true);
 	}
 })();

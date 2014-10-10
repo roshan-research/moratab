@@ -8,11 +8,6 @@
 	float: left;
 }
 
-body {
-	tab-size: 4;
-	text-align: start;
-}
-
 /* buttons */
 
 .input-group {
@@ -77,6 +72,7 @@ body {
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	word-break: normal;
+	tab-size: 4;
 }
 #wmd-input > .editor-content {
 	padding: 10px 0;
