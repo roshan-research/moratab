@@ -919,13 +919,13 @@ $.fn.stackedit = function () {
 	$(document.body).append(
 		'<div class="modal fade modal-insert-link"><div class="modal-dialog"><div class="modal-content">'+
 		'<div class="modal-body"><p>آدرس پیوند را اینجا بنویسید:</p><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span><input id="input-insert-link" type="text" class="col-sm-5 form-control" placeholder="http://example.com/" /></div></div>'+
-		'<div class="modal-footer"><a href="#" class="btn btn-primary action-insert-link"data-dismiss="modal">تایید</a> <a href="#" class="btn btn-default" data-dismiss="modal">لغو</a></div>'+
+		'<div class="modal-footer"><a href="#" class="btn btn-default" data-dismiss="modal">لغو</a> <a href="#" class="btn btn-primary action-insert-link"data-dismiss="modal">تایید</a></div>'+
 		'</div></div></div>'
 	);
 	$(document.body).append(
 		'<div class="modal fade modal-insert-image"><div class="modal-dialog"><div class="modal-content">'+
 		'<div class="modal-body"><p>آدرس تصویر را اینجا بنویسید:</p><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span><input id="input-insert-image" type="text" class="col-sm-5 form-control" placeholder="http://example.com/image.jpg" /></div></div>'+
-		'<div class="modal-footer"><a href="#" class="btn btn-primary action-insert-image" data-dismiss="modal">تایید</a> <a href="#" class="btn btn-default" data-dismiss="modal">لغو</a></div>'+
+		'<div class="modal-footer"><a href="#" class="btn btn-default" data-dismiss="modal">لغو</a> <a href="#" class="btn btn-primary action-insert-image" data-dismiss="modal">تایید</a></div>'+
 		'</div></div></div>'
 	);
 
