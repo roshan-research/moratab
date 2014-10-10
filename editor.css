@@ -17,19 +17,20 @@
 	padding: 0;
 	margin-left: 15px;
 }
-.btn-group>.btn {
+.wmd-buttons .btn-group>.btn {
 	float: right;
+	padding: 6px 12px;
 }
-.btn-group .btn+.btn {
+.wmd-buttons .btn-group .btn+.btn {
 	margin-right: -1px;
 }
-.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+.wmd-buttons .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
 }
-.btn-group>.btn:last-child:not(:first-child) {
+.wmd-buttons .btn-group>.btn:last-child:not(:first-child) {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 	border-top-right-radius: 0;
@@ -56,9 +57,13 @@
 
 /* editor */
 
+.wmd-buttons, #wmd-input {
+	direction: rtl;
+}
+
 #wmd-input {
+	direction: rtl;
 	width: 100%;
-	height: 100%;
 	font-family: IRMitra;
 	font-size: 18px;
 	line-height: 1.65;
