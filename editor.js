@@ -932,7 +932,7 @@ $.fn.moratab = function (editorOptions) {
 		'</div></div></div>'
 	);
 
-	$('.wmd-buttons').width($(this).width()).affix({offset: 0});
+	$('.wmd-buttons').width($(this).width()).affix({offset: $(this).offset().top});
 
 	editor.init();
 	core.initEditor();

@@ -1,9 +1,3 @@
-@font-face {
-	font-family: MMitra;
-	font-weight: normal;
-	src: url('IRMitra.woff') format('woff');
-}
-
 .close {
 	float: left;
 }
@@ -11,15 +5,22 @@
 /* buttons */
 
 .wmd-buttons {
-	top: 0;
 	margin-bottom: 3px;
 	background: #fff;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+.wmd-buttons.affix {
+	top: 0;
+}
+
 .wmd-buttons .btn:hover {
 	background-color: #1F78D8;
 	color: #FFF;
+}
+.wmd-buttons .glyphicon {
+	font-size: 14px;
+	top: 1px;
 }
 
 .input-group {
@@ -33,15 +34,15 @@
 	border-radius: 0 !important;
 	float: right;
 	padding: 6px 12px;
+	height: 34px;
 }
 
 /* modal */
 .modal p {
-	font-family: MMitra;
+	direction: rtl;
 	font-size: 18px;
 }
 .modal .btn {
-	font-family: MMitra;
 	font-size: 17px;
 	padding: 2px 12px;
 }
@@ -62,7 +63,6 @@
 #wmd-input {
 	direction: rtl;
 	width: 100%;
-	font-family: MMitra;
 	font-size: 18px;
 	line-height: 1.65;
 	letter-spacing: normal;
