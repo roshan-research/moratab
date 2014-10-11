@@ -47,7 +47,6 @@ var Markdown = {};
 		doc = window.document,
 		re = window.RegExp,
 		nav = window.navigator,
-		SETTINGS = { lineLength: 72 },
 
 	// Used to work around some browser bugs where we can't use feature testing.
 		uaSniffed = {
@@ -67,8 +66,8 @@ var Markdown = {};
 		linkdescription: 'پیوند',
 		linkdialog: '',
 
-		quote: 'نقل‌قول',
-		quoteexample: 'نقل‌قول',
+		quote: 'نقل قول',
+		quoteexample: 'نقل قول',
 
 		code: 'کد',
 		codeexample: '...',
@@ -1256,21 +1255,6 @@ var Markdown = {};
 		chunk.selection = chunk.selection.replace(txt, "$1 $2");
 	};
 
-	commandProto.wrap = function (chunk, len) {
-		this.unwrap(chunk);
-		var regex = new re("(.{1," + len + "})( +|$\\n?)", "gm"),
-			that = this;
-
-		chunk.selection = chunk.selection.replace(regex, function (line, marked) {
-			if (new re("^" + that.prefixes, "").test(line)) {
-				return line;
-			}
-			return marked + "\n";
-		});
-
-		chunk.selection = chunk.selection.replace(/\s+$/, "");
-	};
-
 	commandProto.doBold = function (chunk, postProcessing) {
 		return this.doBorI(chunk, postProcessing, 2, this.getString("boldexample"));
 	};
@@ -1663,7 +1647,6 @@ var Markdown = {};
 		};
 
 		if (/^(?![ ]{0,3}>)/m.test(chunk.selection)) {
-			this.wrap(chunk, SETTINGS.lineLength - 2);
 			chunk.selection = chunk.selection.replace(/^/gm, "> ");
 			replaceBlanksInTags(true);
 			chunk.skipLines();
@@ -1840,7 +1823,6 @@ var Markdown = {};
 		chunk.skipLines(nLinesUp, nLinesDown, true);
 		chunk.startTag = prefix;
 		var spaces = prefix.replace(/./g, ' ');
-		this.wrap(chunk, SETTINGS.lineLength - spaces.length);
 		chunk.selection = chunk.selection.replace(/\n/g, '\n' + spaces);
 	};
 
