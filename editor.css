@@ -1,5 +1,5 @@
 @font-face {
-	font-family: IRMitra;
+	font-family: MMitra;
 	font-weight: normal;
 	src: url('IRMitra.woff') format('woff');
 }
@@ -39,11 +39,11 @@
 
 /* modal */
 .modal p {
-	font-family: IRMitra;
+	font-family: MMitra;
 	font-size: 18px;
 }
 .modal .btn {
-	font-family: IRMitra;
+	font-family: MMitra;
 	font-size: 17px;
 	padding: 2px 12px;
 }
@@ -64,7 +64,7 @@
 #wmd-input {
 	direction: rtl;
 	width: 100%;
-	font-family: IRMitra;
+	font-family: MMitra;
 	font-size: 18px;
 	line-height: 1.65;
 	letter-spacing: normal;
