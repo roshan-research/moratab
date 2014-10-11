@@ -473,30 +473,11 @@ var Markdown = {};
 		// operation.
 		this.setInputAreaSelection = function () {
 
-			if (!util.isVisible(inputArea)) {
+			if (!util.isVisible(inputArea))
 				return;
-			}
 
-			//if (inputArea.selectionStart !== undefined && !uaSniffed.isOpera) {
-
-				inputArea.focus();
-				inputArea.selectionStart = stateObj.start;
-				inputArea.selectionEnd = stateObj.end;
-			/*
-				inputArea.scrollTop = stateObj.scrollTop;
-
-			}
-			else if (doc.selection) {
-
-				inputArea.focus();
-				var range = inputArea.createTextRange();
-				range.moveStart("character", -inputArea.value.length);
-				range.moveEnd("character", -inputArea.value.length);
-				range.moveEnd("character", stateObj.end);
-				range.moveStart("character", stateObj.start);
-				range.select();
-			}
-			*/
+			inputArea.selectionStart = stateObj.start;
+			inputArea.selectionEnd = stateObj.end;
 		};
 
 		this.setInputAreaSelectionStartEnd = function () {
@@ -783,8 +764,6 @@ var Markdown = {};
 				range.moveEnd("character", defTextLen);
 				range.select();
 			}
-
-			input.focus();
 		}, 0);
 	};
 
@@ -802,7 +781,6 @@ var Markdown = {};
 		// Perform the button's action.
 		function doClick(button) {
 
-			inputBox.focus();
 			var linkOrImage = button.id == "wmd-link-button" || button.id == "wmd-image-button";
 
 			if (button.textOp) {
@@ -837,8 +815,6 @@ var Markdown = {};
 				// no real workaround.  Only the image and link code
 				// create dialogs and require the function pointers.
 				var fixupInputArea = function () {
-
-					inputBox.focus();
 
 					if (chunks) {
 						state.setChunks(chunks);
