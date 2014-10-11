@@ -842,7 +842,7 @@ $.fn.moratab = function (editorOptions) {
 		});
 
 		// Hide default buttons
-		$(".wmd-button-row li").addClass("btn btn-default");
+		$(".wmd-button-row li").addClass("btn");
 
 		// Add customized buttons
 		$("#wmd-bold-button").append($('<span class="glyphicon glyphicon-bold">')).appendTo($('.wmd-buttons .btn-group1'));
@@ -931,6 +931,8 @@ $.fn.moratab = function (editorOptions) {
 		'<div class="modal-footer"><a href="#" class="btn btn-default" data-dismiss="modal">لغو</a> <a href="#" class="btn btn-primary action-insert-image" data-dismiss="modal">تایید</a></div>'+
 		'</div></div></div>'
 	);
+
+	$('.wmd-buttons').width($(this).width()).affix({offset: 0});
 
 	editor.init();
 	core.initEditor();

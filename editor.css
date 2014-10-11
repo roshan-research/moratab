@@ -10,31 +10,29 @@
 
 /* buttons */
 
+.wmd-buttons {
+	top: 0;
+	margin-bottom: 3px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.wmd-buttons .btn:hover {
+	background-color: #1F78D8;
+	color: #FFF;
+}
+
 .input-group {
 	direction: ltr;
 }
 .wmd-buttons ul {
 	padding: 0;
-	margin-left: 15px;
+	margin: 0 0 0 20px;
 }
 .wmd-buttons .btn-group>.btn {
+	border-radius: 0 !important;
 	float: right;
 	padding: 6px 12px;
-}
-.wmd-buttons .btn-group .btn+.btn {
-	margin-right: -1px;
-}
-.wmd-buttons .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-	border-top-right-radius: 4px;
-	border-bottom-right-radius: 4px;
-}
-.wmd-buttons .btn-group>.btn:last-child:not(:first-child) {
-	border-top-left-radius: 4px;
-	border-bottom-left-radius: 4px;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
 }
 
 /* modal */
