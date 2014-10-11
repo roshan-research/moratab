@@ -95,34 +95,13 @@ var Markdown = {};
 	var imageDefaultText = 'http://';
 	var linkDefaultText = 'http://';
 
-	// options, if given, can have the following properties:
-	//   options.helpButton = { handler: yourEventHandler }
-	//   options.strings = { italicexample: "slanted text" }
-	// `yourEventHandler` is the click handler for the help button.
-	// If `options.helpButton` isn't given, not help button is created.
-	// `options.strings` can have any or all of the same properties as
-	// `defaultStrings` above, so you can just override some string displayed
-	// to the user on a case-by-case basis, or translate all strings to
-	// a different language.
-	//
-	// For backwards compatibility reasons, the `options` argument can also
-	// be just the `helpButton` object, and `strings.help` can also be set via
-	// `helpButton.title`. This should be considered legacy.
-	//
 	// The constructed editor object has the methods:
 	// - run() actually starts the editor; should be called after all necessary plugins are registered. Calling this more than once is a no-op.
 	Markdown.Editor = function (idPostfix, options) {
-
 		options = options || {};
 
-		if (typeof options.handler === "function") { //backwards compatible behavior
-			options = { helpButton: options };
-		}
 		options.strings = options.strings || {};
-		if (options.helpButton) {
-			options.strings.help = options.strings.help || options.helpButton.title;
-		}
-		var getString = function (identifier) { return options.strings[identifier] || defaultsStrings[identifier]; }
+		var getString = function (identifier) { return identifier in options.strings ? options.strings[identifier] : defaultsStrings[identifier]; }
 
 		idPostfix = idPostfix || "";
 
@@ -165,7 +144,7 @@ var Markdown = {};
 				}
 			}
 
-			uiManager = new UIManager(idPostfix, panels, undoManager, commandManager, options.helpButton, getString);
+			uiManager = new UIManager(idPostfix, panels, undoManager, commandManager, getString);
 			uiManager.setUndoRedoButtonStates();
 
 			that.undoManager = undoManager;
@@ -1060,10 +1039,9 @@ var Markdown = {};
 		}, 0);
 	};
 
-	function UIManager(postfix, panels, undoManager, commandManager, helpOptions, getString) {
+	function UIManager(postfix, panels, undoManager, commandManager, getString) {
 
-		var inputBox = panels.input,
-			buttons = {}; // buttons.undo, buttons.link, etc. The actual DOM elements.
+		var inputBox = panels.input, buttons = {};
 
 		makeSpritedButtonRow();
 
@@ -1153,14 +1131,12 @@ var Markdown = {};
 					};
 				}
 
-				if (!button.isHelp) {
-					button.onclick = function () {
-						if (this.onmouseout) {
-							this.onmouseout();
-						}
-						doClick(this);
-						return false;
+				button.onclick = function () {
+					if (this.onmouseout) {
+						this.onmouseout();
 					}
+					doClick(this);
+					return false;
 				}
 			}
 			else {
@@ -1222,6 +1198,11 @@ var Markdown = {};
 
 			buttons.redo = makeButton("wmd-redo-button", getString("redo"), null);
 			buttons.redo.execute = function (manager) { if (manager) manager.redo(); };
+
+			if (getString('help'))
+				buttons.help = makeButton("wmd-help-button", getString("help"), bindCommand(function () {
+					window.open('http://www.sobhe.ir/moratab/', '_blank');
+				}));
 
 			setUndoRedoButtonStates();
 		}

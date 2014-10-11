@@ -1,6 +1,7 @@
 // Credit to http://dabblet.com/
-$.fn.moratab = function () {
+$.fn.moratab = function (editorOptions) {
 
+	editorOptions = editorOptions || {};
 	var editor = {};
 	var inputElt;
 	var $inputElt;
@@ -813,9 +814,8 @@ $.fn.moratab = function () {
 		}
 
 		// Create the converter and the editor
-		pagedownEditor = new Markdown.Editor(undefined, {
-			undoManager: editor.undoMgr
-		});
+		editorOptions.undoManager = editor.undoMgr;
+		pagedownEditor = new Markdown.Editor(undefined, editorOptions);
 
 		// Custom insert link dialog
 		pagedownEditor.hooks.set("insertLinkDialog", function(callback) {
@@ -849,7 +849,7 @@ $.fn.moratab = function () {
 		$("#wmd-italic-button").append($('<span class="glyphicon glyphicon-italic">')).appendTo($('.wmd-buttons .btn-group1'));
 
 		$("#wmd-heading-button").append($('<span class="glyphicon glyphicon-header">')).appendTo($('.wmd-buttons .btn-group2'));
-		$("#wmd-quote-button").append($('<span class="glyphicon glyphicon-indent-right">')).appendTo($('.wmd-buttons .btn-group2'));
+		$("#wmd-quote-button").append($('<span class="glyphicon glyphicon-comment">')).appendTo($('.wmd-buttons .btn-group2'));
 		$("#wmd-code-button").append($('<span class="glyphicon glyphicon-flash">')).appendTo($('.wmd-buttons .btn-group2'));
 
 		$("#wmd-ulist-button").append($('<span class="glyphicon glyphicon-align-justify">')).appendTo($('.wmd-buttons .btn-group3'));
@@ -861,6 +861,9 @@ $.fn.moratab = function () {
 
 		$("#wmd-undo-button").append($('<span class="glyphicon glyphicon-arrow-right">')).appendTo($('.wmd-buttons .btn-group5'));
 		$("#wmd-redo-button").append($('<span class="glyphicon glyphicon-arrow-left">')).appendTo($('.wmd-buttons .btn-group5'));
+
+		$("#wmd-help-button").append($('<span class="glyphicon glyphicon-book">')).appendTo($('.wmd-buttons .btn-group6'));
+
 
 		// Other initialization that are not prioritary
 		$(document.body).on('shown.bs.modal', '.modal', function() {
@@ -913,7 +916,7 @@ $.fn.moratab = function () {
 	defaultContent = this.text();
 
 	this.html(
-		'<div class="wmd-buttons"><ul class="btn-group btn-group1"></ul><ul class="btn-group btn-group2"></ul><ul class="btn-group btn-group3"></ul><ul class="btn-group btn-group4"></ul><ul class="btn-group btn-group5"></ul></div><div id="wmd-button-bar" class="hide"></div>'+
+		'<div class="wmd-buttons"><ul class="btn-group btn-group1"></ul><ul class="btn-group btn-group2"></ul><ul class="btn-group btn-group3"></ul><ul class="btn-group btn-group4"></ul><ul class="btn-group btn-group5"></ul><ul class="btn-group btn-group6"></ul></div><div id="wmd-button-bar" class="hide"></div>'+
 		'<pre id="wmd-input"><div class="editor-content" contenteditable=true></div></pre>'
 	);
 	$(document.body).append(
