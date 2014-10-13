@@ -27,7 +27,10 @@
 }
 .wmd-buttons ul {
 	padding: 0;
-	margin: 0 0 0 20px;
+	margin: 0;
+}
+.wmd-buttons ul:not(:last-child) {
+	margin-left: 20px;
 }
 .wmd-buttons .btn-group>.btn {
 	border-radius: 0 !important;
