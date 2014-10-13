@@ -1386,8 +1386,7 @@ var Markdown = {};
 		var hasTextBefore = /\S[ ]*$/.test(chunk.before);
 		var hasTextAfter = /^[ ]*\S/.test(chunk.after);
 
-		// Use 'four space' markdown if the selection is on its own
-		// line or is multiline.
+		// Use code block if the selection is on its own line or is multiline.
 		if ((!hasTextAfter && !hasTextBefore) || /\n/.test(chunk.selection)) {
 
 			chunk.before = chunk.before.replace(/[ ]{4}$/,
@@ -1409,7 +1408,7 @@ var Markdown = {};
 			chunk.skipLines(nLinesBack, nLinesForward);
 
 			if (!chunk.selection) {
-				chunk.startTag = "    ";
+				chunk.startTag = "\t";
 				chunk.selection = this.getString("codeexample");
 			}
 			else {

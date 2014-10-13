@@ -39,7 +39,7 @@ Prism.languages.md = (function() {
 		}
 	};
 	md['pre ltr'] = {
-		pattern: /(^|(?:^|(?:^|\n)(?![ \t]*([*+\-]|\d+\.)[ \t]).*\n)\s*?\n)(\s*(?: {4}|\t).*(?:\n|$))+/g,
+		pattern: /(^|(?:^|(?:^|\n)(?![ \t]*([*+\-]|\d+\.)[ \t]).*\n)\s*?\n)((?: {4}|\t).*(?:\n|$))+/g,
 		lookbehind: true,
 		inside: {
 			lf: lf

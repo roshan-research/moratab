@@ -201,9 +201,7 @@
 #wmd-input .md-title {
 	color: #587ea4;
 }
-#wmd-input .code,
-#wmd-input .img,
-#wmd-input .imgref {
+#wmd-input .code, #wmd-input .img, #wmd-input .imgref, #wmd-input .pre {
 	background-color: rgba(128, 128, 128, 0.075);
 	border-radius: 4px;
 	padding: .15em 0;
@@ -213,4 +211,7 @@
 	direction: ltr;
 	display: inline-block;
 	width: 100%;
+}
+#wmd-input .ltr.pre {
+	display: block;
 }
