@@ -1,12 +1,47 @@
 
+Prism.languages.markup = {
+	comment: /&lt;!--[\w\W]*?-->/g,
+	prolog: /&lt;\?.+?\?>/,
+	doctype: /&lt;!DOCTYPE.+?>/,
+	cdata: /&lt;!\[CDATA\[[\w\W]*?]]>/i,
+	tag: {
+		pattern: /&lt;\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:("|')(\\?[\w\W])*?\1|[^\s'">=]+))?\s*)*\/?>/gi,
+		inside: {
+			tag: {
+				pattern: /^&lt;\/?[\w:-]+/i,
+				inside: {
+					punctuation: /^&lt;\/?/,
+					namespace: /^[\w-]+?:/
+				}
+			},
+			'attr-value': {
+				pattern: /=(?:('|")[\w\W]*?(\1)|[^\s>]+)/gi,
+				inside: {
+					'punctuation': /=|>|"/g
+				}
+			},
+			punctuation: /\/?>/g,
+			'attr-name': {
+				pattern: /[\w:-]+/g,
+				inside: {
+					namespace: /^[\w-]+?:/
+				}
+			}
+
+		}
+	},
+	entity: /&amp;#?[\da-z]{1,8};/gi
+};
+
+
 Prism.languages.latex = {
 	// A tex command e.g. \foo
-	'keyword': /\\(?:[^a-zA-Z]|[a-zA-Z]+)/g,
+	keyword: /\\(?:[^a-zA-Z]|[a-zA-Z]+)/g,
 	// Curly and square braces
-	'lparen': /[[({]/g,
-	'rparen': /[\])}]/g,
+	lparen: /[[({]/g,
+	rparen: /[\])}]/g,
 	// A comment. Tex comments start with % and go to the end of the line
-	'comment': /%.*/g,
+	comment: /%.*/g,
 };
 
 

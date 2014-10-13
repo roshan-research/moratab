@@ -913,7 +913,7 @@ $.fn.moratab = function (editorOptions) {
 
 
 // main.js
-	defaultContent = this.text();
+	defaultContent = this.html();
 
 	this.html(
 		'<div class="wmd-buttons"><ul class="btn-group btn-group1"></ul><ul class="btn-group btn-group2"></ul><ul class="btn-group btn-group3"></ul><ul class="btn-group btn-group4"></ul><ul class="btn-group btn-group5"></ul><ul class="btn-group btn-group6"></ul></div><div id="wmd-button-bar" class="hide"></div>'+
