@@ -25,7 +25,7 @@ Prism.languages.md = (function() {
 	var lf = /\n/gm;
 
 	var md = {};
-	md['pre gfm'] = {
+	md['pre gfm ltr'] = {
 		pattern: /^`{3}.*\n(?:[\s\S]*?)\n`{3} *$/gm,
 		inside: {
 			"md md-pre": /`{3}/,
@@ -42,29 +42,7 @@ Prism.languages.md = (function() {
 		inside: {
 		}
 	};
-	for(var i = 6; i >= 1; i--) {
-		md["h" + i] = {
-			pattern: new RegExp("^#{" + i + "}.+$", "gm"),
-			inside: {
-				"md md-hash": new RegExp("^#{" + i + "}")
-			}
-		};
-	}
-	md.li = {
-		pattern: /^[ \t]*([*+\-]|\d+\.)[ \t].+(?:\n|[ \t].*\n)*/gm,
-		inside: {
-			"md md-li": /^[ \t]*([*+\-]|\d+\.)[ \t]/m,
-			'pre gfm': {
-				pattern: /^((?: {4}|\t)+)`{3}.*\n(?:[\s\S]*?)\n\1`{3} *$/gm,
-				inside: {
-					"md md-pre": /`{3}/,
-					lf: lf
-				}
-			},
-			lf: lf
-		}
-	};
-	md.pre = {
+	md['pre ltr'] = {
 		pattern: /(^|(?:^|(?:^|\n)(?![ \t]*([*+\-]|\d+\.)[ \t]).*\n)\s*?\n)(\s*(?: {4}|\t).*(?:\n|$))+/g,
 		lookbehind: true,
 		inside: {
@@ -118,14 +96,7 @@ Prism.languages.md = (function() {
 	md.hr = {
 		pattern: /^([*\-_] *){3,}$/gm
 	};
-	md.blockquote = {
-		pattern: /^ {0,3}> *[^\n]+$/gm,
-		inside: {
-			"md md-gt": /^ {0,3}> */,
-			"li": md.li
-		}
-	};
-	md['math block'] = {
+	md['math block ltr'] = {
 		pattern: /(\$\$|\\\\\[|\\\\\\\\\()[\s\S]*?(\$\$|\\\\\]|\\\\\\\\\))/g,
 		inside: {
 			"md md-bracket-start": /^(\$\$|\\\\\[|\\\\\\\\\()/,
@@ -140,6 +111,38 @@ Prism.languages.md = (function() {
 			"keyword": /\\?\\(begin|end)/,
 			lf: lf,
 			rest: latex
+		}
+	};
+	md.ltr = {
+		pattern: /^[ <>^*+#\t\\\/\[\]\(\)0-9\._-]*[A-Za-z\$][^\n]*$/gm,
+	};
+	for(var i = 6; i >= 1; i--) {
+		md["h" + i] = {
+			pattern: new RegExp("^#{" + i + "}.+$", "gm"),
+			inside: {
+				"md md-hash": new RegExp("^#{" + i + "}")
+			}
+		};
+	}
+	md.blockquote = {
+		pattern: /^ {0,3}> *[^\n]+$/gm,
+		inside: {
+			"md md-gt": /^ {0,3}> */,
+			"li": md.li
+		}
+	};
+	md.li = {
+		pattern: /^[ \t]*([*+\-]|\d+\.)[ \t].+(?:\n|[ \t].*\n)*/gm,
+		inside: {
+			"md md-li": /^[ \t]*([*+\-]|\d+\.)[ \t]/m,
+			'pre gfm ltr': {
+				pattern: /^((?: {4}|\t)+)`{3}.*\n(?:[\s\S]*?)\n\1`{3} *$/gm,
+				inside: {
+					"md md-pre": /`{3}/,
+					lf: lf
+				}
+			},
+			lf: lf
 		}
 	};
 	md.fndef = {
@@ -355,6 +358,19 @@ Prism.languages.md = (function() {
 	};
 	md.link.inside["md md-underlined-text"].inside = inside;
 	md.linkref.inside["ref-start"].inside["md md-underlined-text"].inside = inside;
+
+	md.ltr.inside = {
+		h1: md.h1,
+		h2: md.h2,
+		h3: md.h3,
+		h4: md.h4,
+		h5: md.h5,
+		h6: md.h6,
+		blockquote: md.blockquote,
+		li: md.li,
+		fndef: md.fndef,
+		linkdef: md.linkdef
+	};
 
 	return md;
 })();

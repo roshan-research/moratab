@@ -205,3 +205,9 @@
 	border-radius: 4px;
 	padding: .15em 0;
 }
+
+#wmd-input .ltr {
+	direction: ltr;
+	display: inline-block;
+	width: 100%;
+}
