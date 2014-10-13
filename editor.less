@@ -1,0 +1,200 @@
+
+/* buttons */
+
+.wmd-buttons {
+	direction: rtl;
+	margin-bottom: 3px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+	&.affix {
+		top: 0;
+	}
+	.btn:hover {
+		background-color: #1F78D8;
+		color: #FFF;
+	}
+	.glyphicon {
+		font-size: 14px;
+	}
+	ul {
+		padding: 0;
+		margin: 0;
+	}
+	ul:not(:last-child) {
+		margin-left: 20px;
+	}
+	.btn-group>.btn {
+		border-radius: 0 !important;
+		float: right;
+		padding: 6px 12px;
+		height: 34px;
+	}
+}
+
+/* modal */
+
+.modal {
+	p {
+		direction: rtl;
+		font-size: 18px;
+	}
+	.btn {
+		font-size: 17px;
+		padding: 2px 12px;
+	}
+	.modal-body {
+		padding: 20px 15px 15px;
+	}
+	.modal-footer {
+		border: none;
+		padding: 0 15px 15px;
+	}
+	.input-group {
+		direction: ltr;
+	}
+	.close {
+		float: left;
+	}
+}
+
+/* editor */
+
+@primary: #0080FF;
+@secondary: @primary;
+@tertiary: @primary;
+@primary-desaturated: desaturate(@primary, 70%);
+@secondary-desaturated: desaturate(@secondary, 80%);
+@code-bg: fade(@secondary-desaturated, 7.5%);
+@tertiary-color-lighter: fade(@tertiary-color, 40%);
+@tertiary-color-light: fade(@tertiary-color, 60%);
+@tertiary-color: @secondary-desaturated;
+@tertiary-color-dark: darken(@tertiary-color, 15%);
+@tertiary-color-darker: darken(@tertiary-color, 30%);
+@secondary-color: lighten(@primary-desaturated, 12%);
+@secondary-color-dark: darken(@secondary-color, 12.5%);
+
+
+
+#wmd-input {
+	direction: rtl;
+	width: 100%;
+	font-size: 18px;
+	line-height: 1.65;
+	letter-spacing: normal;
+	border-radius: 0;
+	color: @tertiary-color-dark;
+	resize: none;
+	border: none;
+	padding: 0;
+	overflow: auto;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	word-break: normal;
+	tab-size: 5;
+
+	> .editor-content {
+		padding: 10px 0;
+		outline: none;
+	}
+
+	.code, .pre {
+		color: @tertiary-color-darker;
+	}
+
+	.tag {
+		color: @tertiary-color-darker;
+
+		.punctuation, .attr-value, .attr-name {
+			font-weight: normal;
+		}
+	}
+
+	.latex, .math {
+		color: @tertiary-color;
+	}
+
+	.entity {
+		color: @tertiary-color;
+	}
+
+	.comment {
+		font-size: 0.9em;
+		color: @tertiary-color-light;
+	}
+
+	.keyword {
+		color: @tertiary-color-dark;
+		font-weight: bold;
+	}
+
+	.code, .img, .imgref, .pre {
+		background-color: @code-bg;
+		border-radius: 5;
+		padding: 0.15em 0;
+	}
+
+	.link, .linkref {
+		.md-underlined-text {
+			color: inherit;
+		}
+	}
+
+	.blockquote {
+		color: @tertiary-color;
+	}
+
+	.h1, .h11 { font-size: 1.7em; }
+	.h2, .h22 { font-size: 1.4em; }
+	.h3 { font-size: 1.2em; }
+	.h4 { font-size: 1.1em; }
+	.h5 { font-size: 1em; }
+	.h6 { font-size: 0.9em; }
+	.md-hash {
+		color: @tertiary-color-lighter;
+	}
+
+	.md, .hr {
+		color: @tertiary-color-light;
+		font-style: normal;
+		font-weight: normal
+	}
+
+	.em, .em .md {
+		font-style: italic;
+	}
+
+	.strong, .strong .md {
+		font-weight: bold;
+	}
+
+	.md-strike-text {
+		text-decoration: line-through
+	}
+
+	.url, .email, .md-underlined-text {
+		text-decoration: underline;
+	}
+
+	.linkdef .url {
+		color: @tertiary-color-light;
+	}
+
+	.img, .imgref {
+		padding: 0.2em 0.4em;
+		padding-right: 0;
+	}
+
+	.md-bang, .md-alt, .md-title {
+		color: @secondary-color-dark;
+	}
+
+	.ltr {
+		direction: ltr;
+		display: inline-block;
+		width: 100%;
+	}
+	.ltr.pre {
+		display: block;
+	}
+}

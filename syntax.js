@@ -204,9 +204,7 @@ Prism.languages.md = (function() {
 	};
 	md.p = {
 		pattern: /.+/g,
-		inside: {
-			'md md-toc': /^\s*\[(toc|TOC)\]\s*$/g
-		}
+		inside: {}
 	};
 	md.lf = /^\n$/gm;
 	md.img = {
