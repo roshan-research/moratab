@@ -77,7 +77,7 @@
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	word-break: normal;
-	tab-size: 4;
+	tab-size: 5;
 }
 #wmd-input > .editor-content {
 	padding: 10px 0;
