@@ -87,7 +87,8 @@ $$ P(E) = {n \choose k} p^k (1-p)^{ n-k} $$
 </div>
 
 <script type="text/javascript">
-	var editor = $('#moratab').moratab({strings: {help: ''}});
+	content = $('<textarea/>').html($('#moratab').html()).val();
+	var editor = $('#moratab').moratab(content, {strings: {help: ''}});
 </script>
 
 </body>

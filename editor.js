@@ -1,14 +1,15 @@
 // Credit to http://dabblet.com/
-$.fn.moratab = function (editorOptions) {
+$.fn.moratab = function (defaultContent, editorOptions) {
 
 	editorOptions = editorOptions || {};
+	defaultContent = defaultContent || '';
+
 	var editor = {};
 	var inputElt;
 	var $inputElt;
 	var contentElt;
 	var $contentElt;
 	var trailingLfNode;
-	var defaultContent = 'متن **مرتب**';
 
 	/* Markdown Section Parser */
 	var delimitersRegexp = '^.+[ \\t]*\\n=+[ \\t]*\\n+|^.+[ \\t]*\\n-+[ \\t]*\\n+|^\\#{1,6}[ \\t]*.+?[ \\t]*\\#*\\n+'; // Title delimiters
@@ -913,7 +914,6 @@ $.fn.moratab = function (editorOptions) {
 
 
 // main.js
-	defaultContent = this.html();
 
 	this.html(
 		'<div class="wmd-buttons"><ul class="btn-group btn-group1"></ul><ul class="btn-group btn-group2"></ul><ul class="btn-group btn-group3"></ul><ul class="btn-group btn-group4"></ul><ul class="btn-group btn-group5"></ul><ul class="btn-group btn-group6"></ul></div><div id="wmd-button-bar" class="hide"></div>'+
