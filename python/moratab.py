@@ -1,4 +1,5 @@
 
+from __future__ import unicode_literals
 import re, mistune
 
 ltr = re.compile(r'[ <>*+\t\n\\\/\[\]\(\)0-9\._-]*[A-Za-z]')
@@ -44,7 +45,19 @@ def replace_expressions(text):
 	return re.sub(r'(\$\$?[^\$\n]+\$?\$)', expkey, text), expressions
 
 
+def append_simple_footnotes(text):
+	for footnote in re.finditer(r'\[\^([^\]]+)\]', text):
+		ref = footnote.group(1)
+
+		if not '[^{0}]:'.format(ref) in text:
+			text += '\n[^{0}]: {0}'.format(ref)
+
+	return text
+
+
 def render(text):
+
+	text = append_simple_footnotes(text)
 
 	# remove expressions
 	text, expressions = replace_expressions(text)
