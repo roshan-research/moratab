@@ -91,14 +91,16 @@
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	word-break: normal;
-	tab-size: 5;
+	tab-size: 3;
 
 	> .editor-content {
 		padding: 10px 0;
 		outline: none;
 	}
 
-	.code, .pre {
+	.code, .pre, .table {
+		font-family: "Courier New";
+		font-size: 90%;
 		color: @tertiary-color-darker;
 	}
 
@@ -128,10 +130,12 @@
 		font-weight: bold;
 	}
 
-	.code, .img, .imgref, .pre {
+	.code, .img, .imgref, .pre, .table {
 		background-color: @code-bg;
-		border-radius: 5;
-		padding: 0.15em 0;
+	}
+
+	.pre, .table {
+		padding: 4px 0;
 	}
 
 	.link, .linkref {
@@ -178,11 +182,6 @@
 
 	.linkdef .url {
 		color: @tertiary-color-light;
-	}
-
-	.img, .imgref {
-		padding: 0.2em 0.4em;
-		padding-right: 0;
 	}
 
 	.md-bang, .md-alt, .md-title {

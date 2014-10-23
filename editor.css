@@ -66,14 +66,17 @@
   white-space: pre-wrap;
   word-wrap: break-word;
   word-break: normal;
-  tab-size: 5;
+  tab-size: 3;
 }
 #wmd-input > .editor-content {
   padding: 10px 0;
   outline: none;
 }
 #wmd-input .code,
-#wmd-input .pre {
+#wmd-input .pre,
+#wmd-input .table {
+  font-family: "Courier New";
+  font-size: 90%;
   color: #29333d;
 }
 #wmd-input .tag {
@@ -102,10 +105,13 @@
 #wmd-input .code,
 #wmd-input .img,
 #wmd-input .imgref,
-#wmd-input .pre {
+#wmd-input .pre,
+#wmd-input .table {
   background-color: rgba(102, 128, 153, 0.075);
-  border-radius: 5;
-  padding: 0.15em 0;
+}
+#wmd-input .pre,
+#wmd-input .table {
+  padding: 4px 0;
 }
 #wmd-input .link .md-underlined-text,
 #wmd-input .linkref .md-underlined-text {
@@ -161,11 +167,6 @@
 }
 #wmd-input .linkdef .url {
   color: rgba(102, 128, 153, 0.6);
-}
-#wmd-input .img,
-#wmd-input .imgref {
-  padding: 0.2em 0.4em;
-  padding-right: 0;
 }
 #wmd-input .md-bang,
 #wmd-input .md-alt,
