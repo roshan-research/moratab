@@ -67,6 +67,7 @@
   word-wrap: break-word;
   word-break: normal;
   tab-size: 3;
+  -moz-tab-size: 3;
 }
 #wmd-input > .editor-content {
   padding: 10px 0;
