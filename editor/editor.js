@@ -927,8 +927,8 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 	);
 	$(document.body).append(
 		'<div class="modal fade modal-insert-image"><div class="modal-dialog"><div class="modal-content">'+
-		'<div class="modal-body"><p>آدرس تصویر را اینجا بنویسید:</p><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span><input id="input-insert-image" type="text" class="col-sm-5 form-control" placeholder="http://example.com/image.jpg" /></div></div>'+
-		'<div class="modal-footer"><a href="#" class="btn btn-default" data-dismiss="modal">لغو</a> <a href="#" class="btn btn-primary action-insert-image" data-dismiss="modal">تایید</a></div>'+
+		'<div class="modal-body"><p>تصویر را در سایت دیگری آپلود کنید و آدرس آن را بنویسید:</p><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span><input id="input-insert-image" type="text" class="col-sm-5 form-control" placeholder="http://example.com/image.jpg" /></div></div>'+
+		'<div class="modal-footer"><a href="http://dropbox.com" target="_blank" class="btn btn-link pull-left">سایتی برای آپلود تصویر</a><a href="#" class="btn btn-default" data-dismiss="modal">لغو</a> <a href="#" class="btn btn-primary action-insert-image" data-dismiss="modal">تایید</a></div>'+
 		'</div></div></div>'
 	);
 
