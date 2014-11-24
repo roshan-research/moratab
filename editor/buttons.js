@@ -88,7 +88,9 @@ var Markdown = {};
 		undo: 'بازگشت',
 		redo: 'انجام مجدد',
 
-		help: 'راهنمای مرتب‌نویسی'
+		help: 'راهنمای مرتب‌نویسی',
+		
+		revert: 'آخرین تغییرات'
 	};
 
 	// The default text that appears in the dialog input box when entering links.
@@ -928,7 +930,13 @@ var Markdown = {};
 				buttons.help = makeButton("wmd-help-button", getString("help"), bindCommand(function () {
 					window.open('http://www.sobhe.ir/moratab/', '_blank');
 				}));
-
+			buttons.revert = makeButton("wmd-revert-button", getString("revert"), bindCommand(function (chunk, postProcessing) {
+				if(localStorage.moratab){
+					editor.setValue(localStorage.moratab);
+					setTimeout(function(){delete window.localStorage["moratab"];}, 200);
+					$(buttons.revert).hide();
+				}
+			}));
 			setUndoRedoButtonStates();
 		}
 
@@ -938,7 +946,7 @@ var Markdown = {};
 				setupButton(buttons.redo, undoManager.canRedo());
 			}
 		};
-
+		
 		this.setUndoRedoButtonStates = setUndoRedoButtonStates;
 		this.buttons = buttons;
 		this.doClick = doClick;

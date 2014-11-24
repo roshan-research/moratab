@@ -43,6 +43,7 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 
 		updateSectionList(parserSectionList);
 		highlightSections();
+		if(editor.undoMgr.canUndo() !=0) localStorage.moratab = text;
 	}
 
 
@@ -425,6 +426,11 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 
 	var undoMgr = new UndoMgr();
 	editor.undoMgr = undoMgr;
+	
+	editor.clearStorage = function(){
+		delete window.localStorage["moratab"];
+		$("#wmd-revert-button").hide();
+	}
 
 	function checkContentChange() {
 		var newTextContent = inputElt.textContent;
@@ -859,13 +865,15 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 		$("#wmd-link-button").append($('<span class="glyphicon glyphicon-link">')).appendTo($('.wmd-buttons .btn-group4'));
 		$("#wmd-image-button").append($('<span class="glyphicon glyphicon-picture">')).appendTo($('.wmd-buttons .btn-group4'));
 		$("#wmd-hr-button").append($('<span class="glyphicon glyphicon-minus">')).appendTo($('.wmd-buttons .btn-group4'));
-
+		$("#wmd-revert-button").append($('<span class="glyphicon glyphicon-floppy-open">')).appendTo($('.wmd-buttons .btn-group4'));
+		
 		// $("#wmd-undo-button").append($('<span class="glyphicon glyphicon-arrow-right">')).appendTo($('.wmd-buttons .btn-group5'));
 		// $("#wmd-redo-button").append($('<span class="glyphicon glyphicon-arrow-left">')).appendTo($('.wmd-buttons .btn-group5'));
 
 		$("#wmd-help-button").append($('<span class="glyphicon glyphicon-book">')).appendTo($('.wmd-buttons .btn-group6'));
+		
 
-
+		if(!localStorage.moratab) $("#wmd-revert-button").hide();
 		// Other initialization that are not prioritary
 		$(document.body).on('shown.bs.modal', '.modal', function() {
 			var $elt = $(this);
