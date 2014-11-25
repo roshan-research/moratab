@@ -19,7 +19,7 @@
   padding: 0;
   margin: 0;
 }
-.wmd-buttons ul:not(:last-child) {
+.wmd-buttons ul:not(:last-child) li:last-child {
   margin-left: 20px;
 }
 .wmd-buttons .btn-group > .btn {
@@ -27,6 +27,12 @@
   float: right;
   padding: 6px 12px;
   height: 34px;
+}
+.wmd-buttons .btn-group6 {
+  float: left;
+}
+.wmd-buttons .btn-group6 li.wmd-button:last-child {
+  margin-left: 0;
 }
 /* modal */
 .modal p {

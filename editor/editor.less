@@ -21,7 +21,7 @@
 		padding: 0;
 		margin: 0;
 	}
-	ul:not(:last-child) {
+	ul:not(:last-child) li:last-child {
 		margin-left: 20px;
 	}
 	.btn-group>.btn {
@@ -29,6 +29,13 @@
 		float: right;
 		padding: 6px 12px;
 		height: 34px;
+	}
+	.btn-group6 {
+		float: left;
+
+		li.wmd-button:last-child {
+			margin-left: 0;
+		}
 	}
 }
 

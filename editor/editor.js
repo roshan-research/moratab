@@ -43,7 +43,9 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 
 		updateSectionList(parserSectionList);
 		highlightSections();
-		if(editor.undoMgr.canUndo() !=0) localStorage.moratab = text;
+
+		if(editor.undoMgr.canUndo() != 0)
+			localStorage.moratab = text;
 	}
 
 
@@ -298,6 +300,7 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 	editor.setValueNoWatch = setValueNoWatch;
 
 	function getValue() {
+		editor.clearStorage();
 		return textContent;
 	}
 
@@ -426,7 +429,7 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 
 	var undoMgr = new UndoMgr();
 	editor.undoMgr = undoMgr;
-	
+
 	editor.clearStorage = function(){
 		delete window.localStorage["moratab"];
 		$("#wmd-revert-button").hide();
@@ -565,7 +568,6 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 			});
 
 		var action = function(action, options) {
-			var textContent = getValue();
 			var min = Math.min(selectionMgr.selectionStart, selectionMgr.selectionEnd);
 			var max = Math.max(selectionMgr.selectionStart, selectionMgr.selectionEnd);
 			var state = {
@@ -865,13 +867,13 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 		$("#wmd-link-button").append($('<span class="glyphicon glyphicon-link">')).appendTo($('.wmd-buttons .btn-group4'));
 		$("#wmd-image-button").append($('<span class="glyphicon glyphicon-picture">')).appendTo($('.wmd-buttons .btn-group4'));
 		$("#wmd-hr-button").append($('<span class="glyphicon glyphicon-minus">')).appendTo($('.wmd-buttons .btn-group4'));
-		$("#wmd-revert-button").append($('<span class="glyphicon glyphicon-floppy-open">')).appendTo($('.wmd-buttons .btn-group4'));
-		
+		$("#wmd-help-button").append($('<span class="glyphicon glyphicon-book">')).appendTo($('.wmd-buttons .btn-group4'));
+
 		// $("#wmd-undo-button").append($('<span class="glyphicon glyphicon-arrow-right">')).appendTo($('.wmd-buttons .btn-group5'));
 		// $("#wmd-redo-button").append($('<span class="glyphicon glyphicon-arrow-left">')).appendTo($('.wmd-buttons .btn-group5'));
 
-		$("#wmd-help-button").append($('<span class="glyphicon glyphicon-book">')).appendTo($('.wmd-buttons .btn-group6'));
-		
+		$("#wmd-revert-button").append($('<span class="glyphicon glyphicon-floppy-open">')).appendTo($('.wmd-buttons .btn-group6'));
+
 
 		if(!localStorage.moratab) $("#wmd-revert-button").hide();
 		// Other initialization that are not prioritary
@@ -924,7 +926,7 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 // main.js
 
 	this.html(
-		'<div class="wmd-buttons"><ul class="btn-group btn-group1"></ul><ul class="btn-group btn-group2"></ul><ul class="btn-group btn-group3"></ul><ul class="btn-group btn-group4"></ul><ul class="btn-group btn-group6"></ul></div><div id="wmd-button-bar" class="hide"></div>'+
+		'<div class="wmd-buttons"><ul class="btn-group btn-group6"></ul><ul class="btn-group btn-group1"></ul><ul class="btn-group btn-group2"></ul><ul class="btn-group btn-group3"></ul><ul class="btn-group btn-group4"></ul></div><div id="wmd-button-bar" class="hide"></div>'+
 		'<pre id="wmd-input"><div class="editor-content" contenteditable=true></div></pre>'
 	);
 	$(document.body).append(

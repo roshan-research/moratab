@@ -89,8 +89,8 @@ var Markdown = {};
 		redo: 'انجام مجدد',
 
 		help: 'راهنمای مرتب‌نویسی',
-		
-		revert: 'آخرین تغییرات'
+
+		revert: 'بازیابی آخرین نوشته'
 	};
 
 	// The default text that appears in the dialog input box when entering links.
@@ -946,7 +946,7 @@ var Markdown = {};
 				setupButton(buttons.redo, undoManager.canRedo());
 			}
 		};
-		
+
 		this.setUndoRedoButtonStates = setUndoRedoButtonStates;
 		this.buttons = buttons;
 		this.doClick = doClick;
