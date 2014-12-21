@@ -551,7 +551,13 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 			.on('paste', function(evt) {
 				undoMgr.currentMode = 'paste';
 				evt.preventDefault();
-				var data = (evt.originalEvent || evt).clipboardData.getData('text/plain') || prompt('Paste something...');
+
+				var data = (evt.originalEvent || evt).clipboardData.getData('text/html');
+				if (htmlToMoratab && data)
+					data = htmlToMoratab(data);
+				else
+					data = (evt.originalEvent || evt).clipboardData.getData('text/plain');
+
 				data = escape(data);
 				adjustCursorPosition();
 				document.execCommand('insertHtml', false, data);
