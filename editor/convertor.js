@@ -23,6 +23,17 @@ var stripHtml = function(html) {
 
 	function clean(node) {
 		node.removeAttr('class style lang dir title');
+
+		if (node.attr('name') && node.attr('name').indexOf('_ftnref') == 0) {
+			node.removeAttr('href');
+			ref = node.text().replace(/\[(\d+)\]/, '[^$1]');
+			node.html(ref);
+		}
+		else if (node.attr('name') && node.attr('name').indexOf('_ftn') == 0) {
+			node.removeAttr('href');
+			ref = node.text().replace(/\[(\d+)\]/, '[^$1]:');
+			node.html(ref);
+		}
 	}
 	function traverse(nodes) {
 		nodes.each(function() {
