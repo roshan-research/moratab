@@ -22,13 +22,15 @@ var stripHtml = function(html) {
 	var validTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'ul', 'ol', 'img', 'li', 'a', 'blockquote', 'pre', 'span', 'b', 'i', 'br', 'em', 'strong', 'code', 'table', 'thead', 'tbody', 'td', 'th', 'tr'];
 
 	function clean(node) {
-		node.removeAttr('class style lang dir');
+		node.removeAttr('class style lang dir title');
 	}
 	function traverse(nodes) {
 		nodes.each(function() {
 			node = $(this);
 			children = node.children();
-			if (!node.text().trim().length) {
+
+			// remove empty nodes
+			if (!node.text().trim().length && !(node[0].tagName == 'IMG' || node.find('img').length)) {
 				node.remove();
 				return;
 			}
