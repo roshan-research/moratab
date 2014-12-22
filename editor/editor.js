@@ -553,7 +553,7 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 				evt.preventDefault();
 
 				var data = (evt.originalEvent || evt).clipboardData.getData('text/html');
-				if (htmlToMoratab && data)
+				if (data && typeof htmlToMoratab != 'undefined')
 					data = htmlToMoratab(data);
 				else
 					data = (evt.originalEvent || evt).clipboardData.getData('text/plain');
