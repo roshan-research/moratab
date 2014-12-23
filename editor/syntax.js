@@ -403,3 +403,68 @@ Prism.languages.md = (function() {
 
 	return md;
 })();
+
+
+/* html to moratab convertor */
+
+var reMarker = new reMarked({
+	h1_setext: false,
+	h2_setext: false,
+	li_bullet: '+',
+	indnt_str: '\t',
+	col_pre: 'ستون ',
+	tbl_edges: true,
+	nbsp_spc: true,
+	span_tags: false,
+	div_tags: false,
+});
+
+
+var stripHtml = function(html) {
+	html = html.replace('<meta http-equiv="content-type" content="text/html; charset=utf-8">', '')
+
+	var dom = $('<div>'+ html +'</div>');
+	var validTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'ul', 'ol', 'img', 'li', 'a', 'blockquote', 'pre', 'span', 'b', 'i', 'br', 'em', 'strong', 'code', 'table', 'thead', 'tbody', 'td', 'th', 'tr'];
+
+	function clean(node) {
+		node.removeAttr('class style lang dir title');
+
+		if (node.attr('name') && node.attr('name').indexOf('_ftnref') == 0) {
+			node.removeAttr('href');
+			ref = node.text().replace(/\[(\d+)\]/, '[^$1]');
+			node.html(ref);
+		}
+		else if (node.attr('name') && node.attr('name').indexOf('_ftn') == 0) {
+			node.removeAttr('href');
+			ref = node.text().replace(/\[(\d+)\]/, '[^$1]:');
+			node.html(ref);
+		}
+	}
+	function traverse(nodes) {
+		nodes.each(function() {
+			node = $(this);
+			children = node.children();
+
+			// remove empty nodes
+			if (!node.text().trim().length && !(node[0].tagName == 'IMG' || node.find('img').length)) {
+				node.remove();
+				return;
+			}
+
+			if (validTags.indexOf(this.tagName.toLowerCase()) < 0) {
+				children.unwrap();
+				node.remove();
+			}	else
+				clean(node);
+			traverse(children);
+		});
+	}
+
+	traverse(dom.children());
+	return dom.html().replace(/\n/g, ' ');
+}
+
+var htmlToMoratab = function(html) {
+	stripped = stripHtml(html);
+	return reMarker.render(stripped);
+}
