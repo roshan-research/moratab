@@ -56,6 +56,10 @@
 .modal .close {
   float: left;
 }
+.modal .glyphicon {
+  font-size: 14px;
+  top: 1px;
+}
 /* editor */
 #wmd-input {
   direction: rtl;
