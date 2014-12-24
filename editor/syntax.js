@@ -421,8 +421,6 @@ var reMarker = new reMarked({
 
 
 var stripHtml = function(html) {
-	html = html.replace('<meta http-equiv="content-type" content="text/html; charset=utf-8">', '')
-
 	var dom = $('<div>'+ html +'</div>');
 	var validTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'ul', 'ol', 'img', 'li', 'a', 'blockquote', 'pre', 'span', 'b', 'i', 'br', 'em', 'strong', 'code', 'table', 'thead', 'tbody', 'td', 'th', 'tr'];
 
@@ -443,6 +441,7 @@ var stripHtml = function(html) {
 	function traverse(nodes) {
 		nodes.each(function() {
 			node = $(this);
+			node.contents().filter(function() { return this.nodeType == 8; }).remove();
 			children = node.children();
 
 			// remove empty nodes
