@@ -421,6 +421,10 @@ var reMarker = new reMarked({
 
 
 var stripHtml = function(html) {
+	// remove everything after </html> tag
+	if (html.indexOf('</html>') >= 0)
+		html = html.substr(0, html.indexOf('</html>')+7)
+
 	var dom = $('<div>'+ html +'</div>');
 	var validTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'ul', 'ol', 'img', 'li', 'a', 'blockquote', 'pre', 'span', 'b', 'i', 'br', 'em', 'strong', 'code', 'table', 'thead', 'tbody', 'td', 'th', 'tr'];
 
@@ -459,6 +463,7 @@ var stripHtml = function(html) {
 		});
 	}
 
+	dom.contents().filter(function() { return this.nodeType == 8; }).remove();
 	traverse(dom.children());
 	return dom.html().replace(/\n/g, ' ');
 }
