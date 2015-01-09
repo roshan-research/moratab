@@ -449,7 +449,7 @@ var stripHtml = function(html) {
 			children = node.children();
 
 			// remove empty nodes
-			if (!node.text().trim().length && !(node[0].tagName == 'IMG' || node.find('img').length)) {
+			if (!node.text().length && !(node[0].tagName == 'IMG' || node.find('img').length)) {
 				node.remove();
 				return;
 			}
@@ -465,6 +465,10 @@ var stripHtml = function(html) {
 
 	dom.contents().filter(function() { return this.nodeType == 8; }).remove();
 	traverse(dom.children());
+
+	// second traverse for removing emptied tags
+	traverse(dom.children());
+
 	return dom.html().replace(/\n/g, ' ');
 }
 
