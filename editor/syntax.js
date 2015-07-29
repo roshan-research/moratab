@@ -426,7 +426,7 @@ var stripHtml = function(html) {
 		html = html.substr(0, html.indexOf('</html>')+7)
 
 	var dom = $('<div>'+ html +'</div>');
-	var validTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'ul', 'ol', 'img', 'li', 'a', 'blockquote', 'pre', 'span', 'b', 'i', 'br', 'em', 'strong', 'code', 'table', 'thead', 'tbody', 'td', 'th', 'tr'];
+	var validTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'ul', 'ol', 'img', 'li', 'a', 'blockquote', 'pre', 'span', 'b', 'big', 'i', 'br', 'em', 'strong', 'code', 'table', 'thead', 'tbody', 'td', 'th', 'tr'];
 
 	function clean(node) {
 		node.removeAttr('class style lang dir title');
