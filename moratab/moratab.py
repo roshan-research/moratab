@@ -1,13 +1,15 @@
 
 from __future__ import unicode_literals
-import re, mistune
+import re
+from mistune import Renderer, escape
+from .math import MarkdownWithMath, MathInlineLexer, MathBlockLexer
 
 ltr = re.compile(r'[ <>*+\t\n\\\/\[\]\(\)0-9\._-]*[A-Za-z]')
 refine = lambda html: refine(html[html.find('>')+1:]) if html.startswith('<') else html
 direction = lambda html: ' dir="ltr"' if ltr.match(refine(html)) else ''
 
 
-class Moratab(mistune.Renderer):
+class Moratab(Renderer):
 	def header(self, text, level, raw=None):
 		return '<h%d%s>%s</h%d>\n' % (level, direction(text), text, level)
 
@@ -28,21 +30,20 @@ class Moratab(mistune.Renderer):
 		return '<%s align="%s">%s</%s>\n' % (tag, align, content, tag)
 
 	def footnote_item(self, key, text):
-		return '<li%s id="fn-%s">%s</li>\n' % (direction(text), mistune.escape(key), text)
+		return '<li%s id="fn-%s">%s</li>\n' % (direction(text), escape(key), text)
+
+	def inline_math(self, text):
+		return '<span class="math">%s</span>' % text
+
+	def block_math(self, text):
+		return '<div class="math">%s</div>' % text
+
+	def latex_environment(self, name, text):
+		return r'\begin{%s}%s\end{%s}' % (name, text, name)
 
 
-markdown = mistune.Markdown(renderer=Moratab(), hard_wrap=True)
-
-
-def replace_expressions(text):
-	expressions = {}
-
-	def expkey(match):
-		key = 'x1x1x%dx' % (len(expressions)-1)
-		expressions[key] = match.group(1)
-		return key
-
-	return re.sub(r'(\$\$?[^\$\n]+\$?\$)', expkey, text), expressions
+renderer = Moratab()
+markdown = MarkdownWithMath(renderer=renderer, inline=MathInlineLexer(renderer), block=MathBlockLexer(), hard_wrap=True)
 
 
 def append_simple_footnotes(text):
@@ -56,17 +57,5 @@ def append_simple_footnotes(text):
 
 
 def render(text):
-
 	text = append_simple_footnotes(text)
-
-	# remove expressions
-	text, expressions = replace_expressions(text)
-
-	# render text without expressions
-	rendered = markdown.render(text)
-
-	# add expressions
-	for key, value in expressions.items():
-		rendered = rendered.replace(key, value)
-
-	return rendered
+	return markdown.render(text)
