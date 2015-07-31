@@ -19,6 +19,10 @@ class Moratab(Renderer):
 	def list_item(self, text):
 		return '<li%s><p>%s</p></li>\n' % (direction(text), text)
 
+	def image(self, src, title, text):
+		caption = '<figcaption>{0}</figcaption>'.format(text) if text else ''
+		return '<figure><img src="{0}" alt="{1}">{2}</figure>'.format(src, text, caption)
+
 	def block_quote(self, text):
 		return '<blockquote%s>%s\n</blockquote>' % (direction(text), text)
 
