@@ -88,6 +88,7 @@ var Markdown = {};
 		undo: 'بازگشت',
 		redo: 'انجام مجدد',
 
+		pdf: 'نسخه قابل چاپ',
 		help: 'راهنمای مرتب‌نویسی',
 
 		revert: 'بازیابی آخرین نوشته'
@@ -930,12 +931,22 @@ var Markdown = {};
 				buttons.help = makeButton("wmd-help-button", getString("help"), bindCommand(function () {
 					window.open('http://www.sobhe.ir/moratab/', '_blank');
 				}));
-			buttons.revert = makeButton("wmd-revert-button", getString("revert"), bindCommand(function (chunk, postProcessing) {
+			buttons.revert = makeButton("wmd-revert-button", getString("revert"), bindCommand(function () {
 				if(localStorage.moratab){
 					editor.setValue(localStorage.moratab);
 					setTimeout(function(){delete window.localStorage["moratab"];}, 200);
 					$(buttons.revert).hide();
 				}
+			}));
+			buttons.pdf = makeButton("wmd-pdf-button", getString("pdf"), bindCommand(function () {
+				$.ajax({
+					type: 'POST',
+					url: 'http://moratab.herokuapp.com/pdf',
+					data: {'moratab': editor.getValue()},
+					success: function() {
+						window.open('http://moratab.herokuapp.com/static/document.pdf' , '_blank');
+					}
+				});
 			}));
 			setUndoRedoButtonStates();
 		}

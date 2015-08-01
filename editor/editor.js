@@ -874,6 +874,7 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 		$("#wmd-image-button").append($('<span class="glyphicon glyphicon-picture">')).appendTo($('.wmd-buttons .btn-group4'));
 		$("#wmd-hr-button").append($('<span class="glyphicon glyphicon-minus">')).appendTo($('.wmd-buttons .btn-group4'));
 		$("#wmd-help-button").append($('<span class="glyphicon glyphicon-book">')).appendTo($('.wmd-buttons .btn-group4'));
+		$("#wmd-pdf-button").append($('<span class="glyphicon glyphicon-print">')).appendTo($('.wmd-buttons .btn-group4'));
 
 		// $("#wmd-undo-button").append($('<span class="glyphicon glyphicon-arrow-right">')).appendTo($('.wmd-buttons .btn-group5'));
 		// $("#wmd-redo-button").append($('<span class="glyphicon glyphicon-arrow-left">')).appendTo($('.wmd-buttons .btn-group5'));
