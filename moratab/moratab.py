@@ -37,10 +37,10 @@ class Moratab(Renderer):
 		return '<li%s id="fn-%s">%s</li>\n' % (direction(text), escape(key), text)
 
 	def inline_math(self, text):
-		return '<span class="math ltr">%s</span>' % text
+		return '<span class="math" dir="ltr">%s</span>' % text
 
 	def block_math(self, text):
-		return '<div class="math ltr">%s</div>' % text
+		return '<div class="math" dir="ltr">%s</div>' % text
 
 	def latex_environment(self, name, text):
 		return r'\begin{%s}%s\end{%s}' % (name, text, name)
