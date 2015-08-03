@@ -36,11 +36,15 @@ body {
   font-size: 24px;
 }
 .content p {
-  margin: 0 0 10px;
+  margin: 0 0 9px;
 }
 .content li p,
 .content ol p {
   margin-bottom: 0;
+}
+.content p + ul,
+.content p + ol {
+  margin-top: -5px;
 }
 .content a {
   color: #428bca;
@@ -56,7 +60,7 @@ body {
 .content ul,
 .content ol {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 9px;
   padding: 0 20px;
 }
 .content li[dir=ltr] {
@@ -108,9 +112,6 @@ body {
 }
 .content pre code {
   font-size: inherit;
-}
-.content .ltr {
-  direction: ltr;
 }
 .content .math {
   font-size: 90%;
@@ -164,6 +165,8 @@ body {
   margin-bottom: 10px;
   border: 0;
   border-top: 1px solid #eee;
+  page-break-after: auto;
+  visibility: initial;
 }
 .content a[rev=footnote] {
   display: none;
@@ -187,6 +190,16 @@ body {
   .content h3 {
     font-size: 20px;
   }
+  .content a {
+    color: #000;
+    display: inline-block;
+    border-bottom: 1px solid #bbb;
+    line-height: 1;
+    padding-bottom: 3px;
+  }
+  .content .footnote-ref a {
+    border-bottom: none;
+  }
   .content figure {
     border: 3px solid #eee;
     border-bottom: none;
@@ -199,5 +212,14 @@ body {
   }
   .content table thead {
     font-size: 85%;
+  }
+  .content .footnotes hr {
+    border-top-color: #ddd;
+  }
+  .content hr {
+    visibility: hidden;
+    padding: 0;
+    margin: 0;
+    page-break-after: always;
   }
 }

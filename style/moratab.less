@@ -45,10 +45,13 @@ body {
 	// content
 
 	p {
-		margin: 0 0 10px;
+		margin: 0 0 9px;
 	}
 	li p, ol p {
 		margin-bottom: 0;
+	}
+	p+ul, p+ol {
+		margin-top: -5px;
 	}
 
 	a {
@@ -66,7 +69,7 @@ body {
 
 	ul, ol {
 		margin-top: 0;
-		margin-bottom: 10px;
+		margin-bottom: 9px;
 		padding: 0 20px;
 	}
 	li[dir=ltr] {
@@ -124,10 +127,6 @@ body {
 		font-size: inherit;
 	}
 
-	.ltr {
-		direction: ltr;
-	}
-
 	.math {
 		font-size: 90%;
 	}
@@ -183,6 +182,8 @@ body {
 		margin-bottom: 10px;
 		border: 0;
 		border-top: 1px solid #eee;
+		page-break-after: auto;
+		visibility: initial;
 	}
 	a[rev=footnote] {
 		display: none;
@@ -209,6 +210,17 @@ body {
 			font-size: 20px;
 		}
 
+		a {
+			color: #000;
+			display: inline-block;
+			border-bottom: 1px solid #bbb;
+			line-height: 1;
+			padding-bottom: 3px;
+		}
+		.footnote-ref a {
+			border-bottom: none;
+		}
+
 		figure {
 			border: 3px solid #eee;
 			border-bottom: none;
@@ -225,6 +237,17 @@ body {
 			thead {
 				font-size: 85%;
 			}
+		}
+
+		.footnotes hr {
+			border-top-color: #ddd;
+		}
+
+		hr {
+			visibility: hidden;
+			padding: 0;
+			margin: 0;
+			page-break-after: always;
 		}
 	}
 }
