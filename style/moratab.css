@@ -192,13 +192,6 @@ body {
   }
   .content a {
     color: #000;
-    display: inline-block;
-    border-bottom: 1px solid #bbb;
-    line-height: 1;
-    padding-bottom: 3px;
-  }
-  .content .footnote-ref a {
-    border-bottom: none;
   }
   .content figure {
     border: 3px solid #eee;
