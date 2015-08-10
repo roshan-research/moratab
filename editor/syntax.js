@@ -429,7 +429,7 @@ var stripHtml = function(html) {
 	var validTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'ul', 'ol', 'img', 'li', 'a', 'blockquote', 'pre', 'span', 'b', 'big', 'i', 'br', 'em', 'strong', 'code', 'table', 'thead', 'tbody', 'td', 'th', 'tr'];
 
 	function clean(node) {
-		node.removeAttr('class style lang dir title');
+		node.removeAttr('id class style lang dir title');
 
 		if (node.attr('name') && node.attr('name').indexOf('_ftnref') == 0) {
 			node.removeAttr('href');
@@ -469,10 +469,11 @@ var stripHtml = function(html) {
 	// second traverse for removing emptied tags
 	traverse(dom.children());
 
-	return dom.html().replace(/\n/g, ' ');
+	return dom.html().replace(/<\/?span>/g, '');
 }
 
 var htmlToMoratab = function(html) {
 	stripped = stripHtml(html);
-	return reMarker.render(stripped);
+	markdown = reMarker.render(stripped)
+	return markdown.replace(/\\#/g, '#');
 }
