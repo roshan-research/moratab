@@ -425,6 +425,12 @@ var stripHtml = function(html) {
 	if (html.indexOf('</html>') >= 0)
 		html = html.substr(0, html.indexOf('</html>')+7)
 
+	// remove editor <pre> tag
+	if (html.indexOf('<pre id="wmd-input">') == 0) {
+		html = html.substr('<pre id="wmd-input">'.length)
+		html.substr(0, html.length - 6)
+	}
+
 	var dom = $('<div>'+ html +'</div>');
 	var validTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'ul', 'ol', 'img', 'li', 'a', 'blockquote', 'pre', 'span', 'b', 'big', 'i', 'br', 'em', 'strong', 'code', 'table', 'thead', 'tbody', 'td', 'th', 'tr'];
 
