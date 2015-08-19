@@ -47,7 +47,7 @@ class Moratab(Renderer):
 
 
 renderer = Moratab()
-markdown = MarkdownWithMath(renderer=renderer, inline=MathInlineLexer(renderer), block=MathBlockLexer(), hard_wrap=True)
+markdown = MarkdownWithMath(renderer=renderer, inline=MathInlineLexer(renderer), block=MathBlockLexer())
 
 
 def append_simple_footnotes(text):

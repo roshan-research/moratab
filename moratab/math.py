@@ -51,6 +51,8 @@ class MathInlineLexer(mistune.InlineLexer):
 	def __init__(self, renderer, rules=None, **kwargs):
 		if rules is None:
 			rules = MathInlineGrammar()
+			rules.hard_wrap()
+
 		super(MathInlineLexer, self).__init__(renderer, rules, **kwargs)
 
 	def output_math(self, m):
