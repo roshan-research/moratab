@@ -942,7 +942,8 @@ var Markdown = {};
 				$('<form>', {
 					'method': 'POST',
 					'action': 'http://moratab.herokuapp.com/pdf',
-					'html': '<textarea name="moratab">'+ editor.getValue() + '</textarea>'
+					'html': '<textarea name="moratab">'+ editor.getValue() + '</textarea>',
+					'style': 'display: none'
 				}).appendTo(document.body).submit();
 			}));
 			setUndoRedoButtonStates();
