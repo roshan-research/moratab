@@ -939,14 +939,11 @@ var Markdown = {};
 				}
 			}));
 			buttons.pdf = makeButton("wmd-pdf-button", getString("pdf"), bindCommand(function () {
-				$.ajax({
-					type: 'POST',
-					url: 'http://moratab.herokuapp.com/pdf',
-					data: {'moratab': editor.getValue()},
-					success: function() {
-						window.open('http://moratab.herokuapp.com/static/document.pdf' , '_blank');
-					}
-				});
+				$('<form>', {
+					'method': 'POST',
+					'action': 'http://moratab.herokuapp.com/pdf',
+					'html': '<textarea name="moratab">'+ editor.getValue() + '</textarea>'
+				}).appendTo(document.body).submit();
 			}));
 			setUndoRedoButtonStates();
 		}
