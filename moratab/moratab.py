@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 import re
 from mistune import Renderer, escape
-from .math import MarkdownWithMath, MathInlineLexer, MathBlockLexer
+from .math import MarkdownWithMath
 
 ltr = re.compile(r'[ <>*+\t\n\\\/\[\]\(\)0-9\._-]*[A-Za-z]')
 refine = lambda html: refine(html[html.find('>')+1:]) if html.startswith('<') else html
@@ -46,8 +46,7 @@ class Moratab(Renderer):
 		return r'\begin{%s}%s\end{%s}' % (name, text, name)
 
 
-renderer = Moratab()
-markdown = MarkdownWithMath(renderer=renderer, hard_wrap=True, inline=MathInlineLexer(renderer), block=MathBlockLexer())
+markdown = MarkdownWithMath(renderer=Moratab(), hard_wrap=True)
 
 
 def append_simple_footnotes(text):
