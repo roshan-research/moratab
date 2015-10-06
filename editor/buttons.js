@@ -927,10 +927,6 @@ var Markdown = {};
 			buttons.redo = makeButton("wmd-redo-button", getString("redo"), null);
 			buttons.redo.execute = function (manager) { if (manager) manager.redo(); };
 
-			if (getString('help'))
-				buttons.help = makeButton("wmd-help-button", getString("help"), bindCommand(function () {
-					window.open('http://www.sobhe.ir/moratab/', '_blank');
-				}));
 			buttons.revert = makeButton("wmd-revert-button", getString("revert"), bindCommand(function () {
 				if(localStorage.moratab){
 					editor.setValue(localStorage.moratab);
@@ -938,14 +934,19 @@ var Markdown = {};
 					$(buttons.revert).hide();
 				}
 			}));
-			buttons.pdf = makeButton("wmd-pdf-button", getString("pdf"), bindCommand(function () {
-				$('<form>', {
-					'method': 'POST',
-					'action': 'http://moratab.herokuapp.com/pdf',
-					'html': '<textarea name="moratab">'+ editor.getValue() + '</textarea>',
-					'style': 'display: none'
-				}).appendTo(document.body).submit();
-			}));
+			if (getString('pdf'))
+				buttons.pdf = makeButton("wmd-pdf-button", getString("pdf"), bindCommand(function () {
+					$('<form>', {
+						'method': 'POST',
+						'action': 'http://moratab.herokuapp.com/pdf',
+						'html': '<textarea name="moratab">'+ editor.getValue() + '</textarea>',
+						'style': 'display: none'
+					}).appendTo(document.body).submit();
+				}));
+			if (getString('help'))
+				buttons.help = makeButton("wmd-help-button", getString("help"), bindCommand(function () {
+					window.open('http://www.sobhe.ir/moratab/', '_blank');
+				}));
 			setUndoRedoButtonStates();
 		}
 
