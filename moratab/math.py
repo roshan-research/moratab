@@ -49,6 +49,10 @@ class MathInlineLexer(mistune.InlineLexer):
 		if rules is None:
 			rules = MathInlineGrammar()
 
+			# hard_wrap fix
+			rules.linebreak = re.compile(r'^ *\n(?!\s*$)')
+			rules.text = re.compile(r'^[\s\S]+?(?=[\\<!\[_*`~$]|https?://| *\n|$)')
+
 		super(MathInlineLexer, self).__init__(renderer, rules, **kwargs)
 
 	def output_math(self, m):

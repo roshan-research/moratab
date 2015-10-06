@@ -61,4 +61,4 @@ def append_simple_footnotes(text):
 
 def render(text):
 	text = append_simple_footnotes(text)
-	return re.sub(r'([^> ])\n', r'\1<br>\n', markdown.render(text))
+	return markdown.render(text)
