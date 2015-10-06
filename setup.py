@@ -2,7 +2,7 @@
 from distutils.core import setup
 
 setup(name='moratab',
-	version='0.4',
+	version='0.5',
 	description='Persian markdown convertor.',
 	author='Alireza Nourian',
 	author_email='az.nourian@gmail.com',
@@ -13,5 +13,5 @@ setup(name='moratab',
 		'Programming Language :: Python :: 2.7',
 		'License :: OSI Approved :: MIT License',
 	],
-	install_requires=['mistune>=0.7.1']
+	install_requires=['mistune==0.7.1']
 )
