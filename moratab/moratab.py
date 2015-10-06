@@ -16,8 +16,6 @@ class Moratab(Renderer):
 		max_level = 3
 		if not self.header_numbers or level > max_level:
 			return ''
-		if not hasattr(self, 'last_header'):
-			self.last_header = []
 
 		self.last_header = self.last_header[:level] + [0]*(max_level - level + 1)
 		self.last_header[level-1] += 1
@@ -79,4 +77,5 @@ def append_simple_footnotes(text):
 def render(text, header_numbers=False):
 	text = append_simple_footnotes(text)
 	markdown.renderer.header_numbers = header_numbers
+	markdown.renderer.last_header = []
 	return markdown.render(text)
