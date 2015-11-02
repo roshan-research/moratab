@@ -470,7 +470,7 @@ $.fn.moratab = function (defaultContent, editorOptions) {
 
 		// See https://gist.github.com/shimondoodkin/1081133
 		if(/AppleWebKit\/([\d.]+)/.exec(navigator.userAgent)) {
-			var $editableFix = $('<input style="width:1px;height:1px;border:none;margin:0;padding:0;" tabIndex="-1">').appendTo('html');
+			var $editableFix = $('<input style="display:none;width:1px;height:1px;border:none;margin:0;padding:0;" tabIndex="-1">').appendTo('html');
 			$contentElt.blur(function() {
 				$editableFix[0].setSelectionRange(0, 0);
 				$editableFix.blur();
