@@ -13,6 +13,7 @@
   color: #FFF;
 }
 .wmd-buttons .glyphicon {
+  top: 2px;
   font-size: 14px;
 }
 .wmd-buttons ul {
