@@ -14,11 +14,15 @@
 
 بسته پایتون `moratab` آسان نصب می‌شود:
 
+</div>
+
 ```
 pip install moratab
 ```
 
+<div dir=rtl>
 و استفاده از آن هم پیچیده نیست:
+</div>
 
 ```python
 >>> from moratab import render
