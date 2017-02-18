@@ -16,13 +16,12 @@
 
 <pre dir="ltr">pip install moratab</pre>
 
-
 و استفاده از آن هم پیچیده نیست:
 
-```python
+<pre dir="ltr">
 >>> from moratab import render
 >>> render(text)
-```
+</pre>
 
 
 [بوته]: http://www.boute.ir
