@@ -14,12 +14,9 @@
 
 بسته پایتون `moratab` آسان نصب می‌شود:
 
-
-<div dir=ltr>
 ```
 pip install moratab
 ```
-</div>
 
 و استفاده از آن هم پیچیده نیست:
 
