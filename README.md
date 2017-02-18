@@ -1,4 +1,4 @@
-<div dir=rtl>
+<div dir="rtl">
 
 
 # مرتب
@@ -14,9 +14,8 @@
 
 بسته پایتون `moratab` آسان نصب می‌شود:
 
-```
-pip install moratab
-```
+<pre dir="ltr">pip install moratab</pre>
+
 
 و استفاده از آن هم پیچیده نیست:
 
