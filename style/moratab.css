@@ -205,8 +205,15 @@ body {
   .content figure figcaption {
     background: #eee;
   }
+  .content table {
+    page-break-inside: auto;
+  }
   .content table thead {
     font-size: 85%;
+  }
+  .content table tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
   }
   .content .footnotes hr {
     border-top-color: #ddd;
