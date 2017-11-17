@@ -70,6 +70,7 @@ body {
   max-width: 100%;
   margin: 24px auto 40px;
   display: table;
+  page-break-inside: avoid;
 }
 .content figure img {
   max-width: 100%;
