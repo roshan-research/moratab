@@ -70,7 +70,7 @@ body {
   max-width: 100%;
   margin: 24px auto 40px;
   display: table;
-  page-break-inside: avoid;
+  text-align: center;
 }
 .content figure img {
   max-width: 100%;
@@ -197,6 +197,7 @@ body {
   .content figure {
     border: 3px solid #eee;
     border-bottom: none;
+    page-break-inside: avoid;
   }
   .content figure img {
     box-shadow: none;
