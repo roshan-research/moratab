@@ -23,10 +23,11 @@ class Moratab(Renderer):
 		if self.last_header[0] == 0:
 			return ''
 
-		return '<span>%s</span>' % ('.'.join(map(str, self.last_header[:level])) + '. ').translate(number_translation)
+		return '<span>%s</span>' % ('.'.join(map(str, self.last_header[:level])) + '. ')
 
 	def header(self, text, level, raw=None):
-		return '<h%d%s>%s</h%d>\n' % (level, direction(text), self.header_number(level) + text, level)
+		number = self.header_number(level).translate(number_translation) if not direction(text) else self.header_number(level)
+		return '<h%d%s>%s</h%d>\n' % (level, direction(text), number + text, level)
 
 	def paragraph(self, text):
 		return '<p%s>%s</p>\n' % (direction(text), text)
