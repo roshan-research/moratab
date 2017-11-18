@@ -2,7 +2,7 @@
 from distutils.core import setup
 
 setup(name='moratab',
-	version='0.5.1',
+	version='0.5.2',
 	description='Persian markdown convertor.',
 	author='Alireza Nourian',
 	author_email='az.nourian@gmail.com',
