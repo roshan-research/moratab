@@ -1,5 +1,5 @@
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(name='moratab',
 	version='0.5.2',
