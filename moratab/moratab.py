@@ -49,6 +49,9 @@ class Moratab(Renderer):
 			return '<%s>%s</%s>\n' % (tag, content, tag)
 		return '<%s align="%s">%s</%s>\n' % (tag, align, content, tag)
 
+	def footnote_ref(self, key, index):
+		return '<sup class="footnote-ref" id="fnref-%s"><a href="#fn-%s" rel="footnote">%d</a></sup>' % (escape(key), escape(key), index)
+
 	def footnote_item(self, key, text):
 		return '<li%s id="fn-%s">%s</li>\n' % (direction(text), escape(key), text)
 
