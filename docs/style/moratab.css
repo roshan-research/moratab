@@ -119,6 +119,7 @@ body {
 }
 .content div.math {
   text-align: center;
+  page-break-inside: avoid;
 }
 .content table {
   width: 100%;
@@ -173,6 +174,9 @@ body {
   display: none;
 }
 @media print {
+  @page {
+    margin: 15mm;
+  }
   body {
     font-size: 20px;
     color: #000;

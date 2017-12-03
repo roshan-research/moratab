@@ -133,6 +133,7 @@ body {
 	}
 	div.math {
 		text-align: center;
+		page-break-inside: avoid;
 	}
 
 	// table
@@ -192,6 +193,10 @@ body {
 }
 
 @media print {
+	@page {
+		margin: 15mm;
+	}
+
 	body {
 		font-size: 20px;
 		color: #000;
@@ -243,8 +248,8 @@ body {
 			}
 
 			tr {
-				page-break-inside:avoid;
-				page-break-after:auto;
+				page-break-inside: avoid;
+				page-break-after: auto;
 			}
 		}
 
