@@ -13,5 +13,5 @@ setup(name='moratab',
 		'Programming Language :: Python :: 2.7',
 		'License :: OSI Approved :: MIT License',
 	],
-	install_requires=['mistune==0.7.1']
+	install_requires=['mistune==0.8.1']
 )
